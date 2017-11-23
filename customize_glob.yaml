@@ -1,0 +1,14 @@
+  "sensor.*temperature":
+    icon: mdi:thermometer
+
+  "sensor.*window_contact":
+    icon: mdi:window-open
+  
+  "sensor.*threeaxis":
+    icon: mdi:arrow-expand-all
+  
+  "sensor.*_acceleration":
+    icon: mdi:run-fast
+
+  "sensor.*battery":
+    icon: mdi:battery

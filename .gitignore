@@ -1,0 +1,20 @@
+# passwords
+secrets.yaml
+
+# Other
+*.uuid
+*.log
+*.db*
+.HA_VERSION
+.uuid
+.automatic
+callback
+
+# Fitbit, Phillips Hue, & Harmony Hub
+*.conf
+
+# Automatic (My cars)
+known_devices.yaml
+
+# tts files
+tts

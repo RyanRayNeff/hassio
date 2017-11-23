@@ -1,0 +1,35 @@
+- platform: mqtt
+  name: "White Noise"
+  command_topic: "cmnd/white_noise/power"
+  state_topic: "stat/white_noise/POWER"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: mqtt
+  name: "Living Room Lamp"
+  command_topic: "cmnd/living_room_lamp/power"
+  state_topic: "stat/living_room_lamp/POWER"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: mqtt
+  name: "Foot heater"
+  command_topic: "cmnd/foot_heater/power"
+  state_topic: "stat/foot_heater/POWER"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: mqtt
+  name: "Sonoff3"
+  command_topic: "cmnd/sonoff3/power"
+  state_topic: "stat/sonoff3/POWER"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true

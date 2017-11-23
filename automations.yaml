@@ -1,0 +1,464 @@
+- action:
+  - alias: Lemon Grow Lights On
+    data:
+      entity_id: switch.lemon_lights
+    service: switch.turn_on
+  alias: Lemon lights on at dawn
+  condition: []
+  id: '1508122874635'
+  trigger:
+  - event: sunrise
+    offset: -01:00:00
+    platform: sun
+- action:
+  - alias: Water pump on
+    data:
+      entity_id: switch.sonoff3
+    service: switch.turn_on
+  - alias: Notify me that the water is on
+    data:
+      message: The HA automation switched the lemon water on
+    service: notify.hassiopushbullet
+  alias: Lemon water On Monday, Wednesday, and Friday
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - wed
+    - fri
+  id: '1508123571832'
+  trigger:
+  - at: 07:15:00
+    platform: time
+- action:
+  - data:
+      entity_id: switch.sonoff3
+    service: switch.turn_off
+  - alias: Notify me
+    data:
+      message: Lemon water has been turned off
+    service: notify.hassiopushbullet
+  - alias: Google home kitchen announcement
+    data:
+      message: The hot frothy lemon pipe has dried up.
+    entity_id: media_player.kitchen_speaker
+    service: tts.google_say
+  alias: Lemon Water Off (After 2 cups)
+  condition: []
+  id: '1508123732995'
+  trigger:
+  - entity_id: switch.sonoff3
+    for:
+      minutes: 3
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Google home kitchen announcement
+    data:
+      message: Oh shit, did you mean to turn on the lemon water? You should probably
+        shut that off before your lemons get moist. Moist, moist moist moist.
+    entity_id: media_player.kitchen_speaker
+    service: tts.google_say
+  - alias: Push it to my phone
+    data:
+      message: Somebody turned on the lemon water outside the normal schedule.
+    service: notify.hassiopushbullet
+  alias: Lemon water emergency notification
+  condition:
+  - after: 07:20:00
+    before: 07:10:00
+    condition: time
+  id: '1508125985421'
+  trigger:
+  - entity_id: switch.sonoff3
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Lemon Grow Lights Off
+    data:
+      entity_id: switch.lemon_lights
+    service: switch.turn_off
+  alias: Lemon lights off at dusk
+  condition: []
+  id: '1508463096852'
+  trigger:
+  - event: sunset
+    offset: +01:00:00
+    platform: sun
+- action:
+  - alias: Sonoff white noise on
+    data:
+      entity_id: switch.white_noise
+    service: switch.turn_on
+  alias: White Noise Machine On
+  condition: []
+  id: '1509418577474'
+  trigger:
+  - at: '21:00:00'
+    platform: time
+- action:
+  - alias: Sonoff white noise machine off
+    data:
+      entity_id: switch.white_noise
+    service: switch.turn_off
+  alias: White Noise Machine Off
+  condition: []
+  id: '1509418852270'
+  trigger:
+  - at: 07:00:00
+    platform: time
+- action:
+  - data:
+      entity_id: switch.foot_heater
+    service: switch.turn_off
+  - data:
+      message: Foot warmer turned off
+    service: notify.hassiopushbullet
+  alias: Foot heater auto off after 1 hour
+  condition: []
+  id: '1509419473604'
+  trigger:
+  - entity_id: switch.foot_heater
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 60
+- action:
+  - data:
+      entity_id: light.laundry_room_light_2
+    service: light.turn_on
+  alias: Laundry Room lights on
+  condition: []
+  id: '1509932489240'
+  trigger:
+  - entity_id: sensor.xiaomi_motion__motion
+    from: inactive
+    platform: state
+    to: active
+- action:
+  - data:
+      entity_id: light.laundry_room_light_2
+    service: light.turn_off
+  alias: Laundry room lights off motion
+  condition: []
+  id: '1509935790761'
+  trigger:
+  - entity_id: sensor.xiaomi_motion__motion
+    from: active
+    platform: state
+    to: inactive
+    for:
+      minutes: 5
+- action:
+  - data:
+      message: The backdoor slider is open.
+    service: tts.google_say
+  alias: Slider door reminder
+  condition:
+  - below: 60
+    condition: numeric_state
+    entity_id: sensor.weather_temperature
+  id: '1510433529370'
+  trigger:
+  - entity_id: sensor.backdoor_slider_contact
+    for:
+      minutes: 1
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Arm the blink system
+    data:
+      device_armed: 'True'
+    service: blink.arm_system
+  - alias: Notify via Pushbullet
+    data:
+      message: The garage door has been opened
+    service: notify.hassiopushbullet
+  alias: Arm Camera when garage door opens
+  condition: []
+  id: '1510960310019'
+  trigger:
+  - entity_id: sensor.garage_door
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Pushbullet notify me
+    data:
+      message: The garage door has been closed
+    service: notify.hassiopushbullet
+  alias: Notify when garage door closes
+  condition: []
+  id: '1510960900897'
+  trigger:
+  - entity_id: sensor.garage_door
+    from: open
+    platform: state
+    to: closed
+- action:
+  - alias: Notify me
+    data:
+      message: Something has opened
+    service: notify.hassiopushbullet
+  alias: Something has opened on a weeknight
+  condition:
+  - condition: time
+    after: '22:00:00'
+    before: 05:00:00
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+  id: '1510963733847'
+  trigger:
+  - entity_id: sensor.backdoor_slider_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.bathroom_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.bedroom_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.catio_door_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.front_door_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.front_left_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.front_right_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.garage_door
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.office_window_contact
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Turn on tv lights
+    data:
+      entity_id: light.tv_lights
+    service: light.turn_on
+  alias: Living room lights off turns on TV lights
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  - condition: state
+    entity_id: media_player.roku_ys00mr258117
+    state: home
+  id: '1511139841917'
+  trigger:
+  - entity_id: light.living_room_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - alias: Turn off tv lights
+    data:
+      entity_id: light.tv_lights
+    service: light.turn_off
+  alias: Living Room light on turns off tv lights
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1511142152329'
+  trigger:
+  - entity_id: light.living_room_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Turn the tv light on
+    data:
+      entity_id: light.tv_lights
+    service: light.turn_on
+  - alias: Set the hue scene
+    data:
+      group_name: Living room
+      scene_name: After work
+    service: light.hue_activate_scene
+  alias: TV lights on at Dusk
+  condition: []
+  id: '1511144930674'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - data:
+      entity_id: light.tv_lights
+    service: light.turn_off
+  alias: TV lights off at dawn
+  condition: []
+  id: '1511145129439'
+  trigger:
+  - event: sunrise
+    platform: sun
+- action:
+  - alias: Set the scene to night light
+    data:
+      group_name: Living room
+      scene_name: living room night light
+    service: light.hue_activate_scene
+  alias: TV lights bedtime mode
+  condition: []
+  id: '1511146592922'
+  trigger:
+  - at: '21:00:00'
+    platform: time
+- action:
+  - alias: Turn on tv lights
+    data:
+      entity_id: light.tv_lights
+    service: light.turn_on
+  alias: TV lights on when Roku off
+  condition:
+  - condition: state
+    entity_id: light.living_room_lights
+    state: 'off'
+  id: '1511153333930'
+  trigger:
+  - entity_id: media_player.roku_ys00mr258117
+    from: playing
+    platform: state
+    to: home
+- action:
+  - alias: Turn off tv lights
+    data:
+      entity_id: light.tv_lights
+    service: light.turn_off
+  alias: TV lights off when Roku on
+  condition: []
+  id: '1511153487049'
+  trigger:
+  - entity_id: media_player.roku_ys00mr258117
+    from: home
+    platform: state
+    to: playing
+- action:
+  - alias: Bedside lamp on
+    data:
+      entity: light.bed_lamp
+    service: light.turn_on
+  alias: Bedside lamp on at 9pm
+  condition: []
+  id: '1511228516729'
+  trigger:
+  - at: '21:00:00'
+    platform: time
+- action:
+  - alias: 'Text me '
+    data:
+      message: Jasons home
+    service: notify.hassiopushbullet
+  - alias: Turn off the bool, so this runs only once
+    data:
+      entity_id: input_boolean.notify_home
+    service: input_boolean.turn_off
+  alias: Jason's home
+  condition:
+  - condition: state
+    entity_id: sensor.nichol
+    state: not present
+  - condition: state
+    entity_id: sensor.neff
+    state: not present
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+  - condition: state
+    entity_id: input_boolean.notify_home
+    state: 'on'
+  id: '1511228807687'
+  trigger:
+  - entity_id: sensor.front_door_contact
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Reset the bool for Notify me when Jason gets home
+    data:
+      entity_id: input_boolean.notify_home
+    service: input_boolean.turn_on
+  - alias: Reset the bool for Welcome home announcement
+    data:
+      entity_id: input_boolean.welcome_home_announcement
+    service: input_boolean.turn_on
+  - alias: Reset the bool for Jason's workout automation
+    data:
+      entity_id: input_boolean.jasons_workout
+    service: input_boolean.turn_on
+  alias: Reset all input booleans daily
+  condition: []
+  id: '1511317812928'
+  trigger:
+  - at: 03:00:00
+    platform: time
+- action:
+  - data:
+      message: Welcome home master.
+    service: tts.google_say
+  - alias: Turn off the input bool, so it doesn't repeat itself.
+    data:
+      entity_id: input_boolean.welcome_home_announcement
+    service: input_boolean.turn_off
+  - alias: Notification for testing
+    data:
+      message: Your welcome home automation executed.
+    service: notify.hassiopushbullet
+  - alias: Turn on welcome home lights
+    data:
+      entity_id: group.welcome_home
+    service: homeassistant.turn_on
+  alias: Welcome Home announcement
+  condition:
+  - condition: state
+    entity_id: sensor.nichol
+    state: present
+  - condition: state
+    entity_id: sensor.neff
+    state: present
+  - condition: state
+    entity_id: input_boolean.welcome_home_announcement
+    state: 'on'
+  - after: '16:00:00'
+    before: '18:00:00'
+    condition: time
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  id: '1511318877191'
+  trigger:
+  - entity_id: sensor.front_door_contact
+    from: open
+    platform: state
+    to: closed

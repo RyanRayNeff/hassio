@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1280 800" style="enable-background:new 0 0 1280 800;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#212121;}
+	.st1{fill:#424242;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st5{opacity:0.46;}
+	.st6{fill:#424242;}
+	.st7{font-family:'RobotoCondensed-Regular';}
+	.st8{font-size:30px;}
+	.st9{font-family:'Roboto-Bold';}
+	.st10{font-size:45.0625px;}
+	.st11{font-family:'Roboto-Regular';}
+	.st12{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st13{stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st14{fill:#FF5252;stroke:#D50000;stroke-miterlimit:10;}
+	.st15{fill:#A4A4A4;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st16{fill:none;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
+	.st17{fill:#666666;}
+</style>
+<g id="Layer_1">
+	<g id="Background">
+		<rect x="0.9" y="-2" class="st0" width="1279.1" height="800"/>
+	</g>
+	<path class="st1" d="M1127.6,198.1v-38.8H856.4v10.3H970V291h-75.6v24.1H843v-36.9h-67.1v-72h-45.6v-3v-33.6H810v-10.3h-79.7V66.8
+		H95.2v91.6H0.9V798h410.2v-85.9h318.1l37.6-37.2h3v-10.2h-7.3l-37.6,37.2H411.1V396.8h118v-76.9h-10.3v66.7H411.1H406h-46.2V296
+		h-26.2v10.2h15.9v80.4H206v-80.4h14.5V296h-24.7v90.6v5.1v33.8h-10.7v10.2H206v-38.9h194.8v390.9H11.2v-352h112.2v-10.2H11.2V168.7
+		h168.7v-10.3h-74.5V77H720v82.3v6.8v32h-71.7v10.3H720v8.1h45.6v116.9h-45.2v112h235.4v-10.2h-3v-12.7h-10.3v12.6h-38V301.2h38v6.6
+		h10.3v-6.6h27.4v-83.6h5.9v-10.2h-5.9v-37.8h137.2v33.7h-0.1v4.1h-17.1v10.2h27.4v-9.2h27.2v-10.3H1127.6z M894.3,435.1H730.7
+		v-91.5h45.2v-55.2h56.9v36.9h61.5L894.3,435.1z"/>
+	<circle id="light.hallway_lights" class="st2" cx="870.5" cy="461.3" r="56.9"/>
+	<circle id="light.bathroom_vanity_lights" class="st2" cx="898.5" cy="220.3" r="56.9"/>
+	<circle id="light.bathroom_fan_lights" class="st2" cx="807.2" cy="223" r="56.9"/>
+	<circle id="light.garage_lights" class="st2" cx="208.6" cy="576.8" r="56.9"/>
+	<circle id="light.dining_room_lights" class="st2" cx="639.9" cy="297.9" r="56.9"/>
+	<g id="light.entry_way_lights">
+		<circle class="st3" cx="795.9" cy="610.8" r="56.9"/>
+		<circle class="st4" cx="795.9" cy="610.8" r="56.9"/>
+	</g>
+	<circle id="light.kitchen_lights" class="st2" cx="444.9" cy="265.3" r="56.9"/>
+	<circle id="light.laundry_room_light_2" class="st2" cx="275.4" cy="233.8" r="56.9"/>
+	<circle id="light.laundry_room_light_one" class="st2" cx="277.8" cy="349.8" r="56.9"/>
+	<circle id="light.library_lights" class="st2" cx="91.1" cy="280" r="56.9"/>
+	
+		<ellipse id="light.living_room_lights" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -234.2266 515.127)" class="st2" cx="504.7" cy="540.3" rx="56.9" ry="56.9"/>
+	<g id="light.porch_lights">
+		<g id="on-layer_3_" class="st5">
+			<circle class="st3" cx="777.7" cy="737.7" r="64.1"/>
+		</g>
+		<circle id="off-layer_2_" class="st6" cx="777.7" cy="737.7" r="22.1"/>
+		<path id="sun_2_" class="st3" d="M777.7,729.6c4.5,0,8.1,3.6,8.1,8.1s-3.6,8.1-8.1,8.1s-8.1-3.6-8.1-8.1
+			C769.6,733.2,773.2,729.6,777.7,729.6 M777.7,732.8c-2.7,0-4.9,2.2-4.9,4.9s2.2,4.9,4.9,4.9s4.9-2.2,4.9-4.9
+			S780.4,732.8,777.7,732.8 M777.7,721.4l3.9,5.6c-1.2-0.4-2.5-0.7-3.9-0.7s-2.7,0.2-3.9,0.7L777.7,721.4 M763.6,729.6l6.8-0.6
+			c-1,0.8-1.9,1.8-2.5,3c-0.7,1.2-1.1,2.4-1.4,3.7L763.6,729.6 M763.7,745.9l2.9-6.1c0.2,1.3,0.7,2.5,1.4,3.7s1.6,2.2,2.5,3
+			L763.7,745.9 M791.8,729.6l-2.9,6.2c-0.2-1.3-0.7-2.5-1.4-3.7s-1.5-2.2-2.5-3L791.8,729.6 M791.8,745.9l-6.7,0.6
+			c1-0.8,1.8-1.9,2.5-3c0.7-1.2,1.1-2.4,1.4-3.7L791.8,745.9 M777.7,754l-3.9-5.6c1.2,0.4,2.5,0.7,3.9,0.7c1.3,0,2.7-0.3,3.9-0.7
+			L777.7,754z"/>
+	</g>
+	<circle id="light.string_lights" class="st2" cx="599.1" cy="142" r="56.9"/>
+	<g id="light.office_lights">
+		<g id="on-layer" class="st5">
+			<circle class="st3" cx="942.9" cy="628.7" r="64.1"/>
+		</g>
+		<circle id="off-layer" class="st6" cx="942.9" cy="628.7" r="22.1"/>
+		<path id="sun" class="st3" d="M942.9,620.6c4.5,0,8.1,3.6,8.1,8.1s-3.6,8.1-8.1,8.1s-8.1-3.6-8.1-8.1
+			C934.8,624.2,938.4,620.6,942.9,620.6 M942.9,623.8c-2.7,0-4.9,2.2-4.9,4.9s2.2,4.9,4.9,4.9s4.9-2.2,4.9-4.9
+			S945.6,623.8,942.9,623.8 M942.9,612.4l3.9,5.6c-1.2-0.4-2.5-0.7-3.9-0.7s-2.7,0.2-3.9,0.7L942.9,612.4 M928.8,620.6l6.8-0.6
+			c-1,0.8-1.9,1.8-2.5,3c-0.7,1.2-1.1,2.4-1.4,3.7L928.8,620.6 M928.9,636.9l2.9-6.1c0.2,1.3,0.7,2.5,1.4,3.7s1.6,2.2,2.5,3
+			L928.9,636.9 M957,620.6l-2.9,6.2c-0.2-1.3-0.7-2.5-1.4-3.7s-1.5-2.2-2.5-3L957,620.6 M957,636.9l-6.7,0.6c1-0.8,1.8-1.9,2.5-3
+			c0.7-1.2,1.1-2.4,1.4-3.7L957,636.9 M942.9,645l-3.9-5.6c1.2,0.4,2.5,0.7,3.9,0.7c1.3,0,2.7-0.3,3.9-0.7L942.9,645z"/>
+	</g>
+	<g id="sensor.garage_temp__temperature">
+		<circle class="st6" cx="352.8" cy="749.2" r="29.2"/>
+		<text transform="matrix(1 0 0 1 335.8394 760.2025)" class="st3 st7 st8">--</text>
+	</g>
+	<g id="sensor.catio_door_temperature">
+		<circle class="st6" cx="310.9" cy="200.8" r="29.2"/>
+		<text transform="matrix(1 0 0 1 293.4467 213.361)" class="st3 st9 st10">--</text>
+	</g>
+	<g id="sensor.lemon_tree_temperature">
+		<circle class="st6" cx="122.5" cy="277.2" r="29.2"/>
+		<text transform="matrix(1 0 0 1 105.0988 289.7815)" class="st3 st11 st10">--</text>
+	</g>
+	<g id="sensor.backdoor_slider_temperature">
+		<circle class="st6" cx="561.6" cy="242.3" r="29.2"/>
+		<text transform="matrix(1 0 0 1 544.1989 254.9315)" class="st3 st11 st10">--</text>
+	</g>
+	<g id="sensor.bathroom_window_temperature">
+		<circle class="st6" cx="821" cy="198.1" r="29.2"/>
+		<text transform="matrix(1 0 0 1 803.5488 210.6815)" class="st3 st11 st10">--</text>
+	</g>
+	<g id="sensor.weather_temperature">
+		<circle class="st6" cx="1207.6" cy="45.2" r="29.2"/>
+		<text transform="matrix(1 0 0 1 1190.2421 57.8091)" class="st3 st11 st10">--</text>
+	</g>
+	<rect x="293.5" y="330.8" class="st12" width="54.5" height="55.8"/>
+	<rect x="349.6" y="168.7" class="st13" width="168.4" height="37.3"/>
+	<circle id="off-layer_1_" class="st6" cx="1097" cy="42.2" r="22.1"/>
+	<path class="st3" d="M1104.1,34.6l-2.5,1.9l0.9,3.1l-2.6-1.8l-2.6,1.8l0.9-3.1l-2.5-1.9l3.2-0.1l1.1-3l1.1,3L1104.1,34.6
+		 M1107.6,41.5l-1.6,1.3l0.6,2l-1.7-1.2l-1.7,1.2l0.6-2l-1.6-1.3l2.1-0.1l0.7-1.9l0.7,1.9L1107.6,41.5 M1105.3,46.5
+		c0.8-0.1,1.7,1.1,1.2,1.9c-0.3,0.5-0.7,0.9-1.1,1.3c-3.9,3.9-10.2,3.9-14.1,0s-3.9-10.2,0-14.1c0.4-0.4,0.8-0.8,1.3-1.1
+		c0.8-0.5,1.9,0.4,1.9,1.2c-0.3,2.9,0.7,5.8,2.9,8C1099.4,45.8,1102.4,46.8,1105.3,46.5 M1103.6,48.5c-2.8-0.2-5.6-1.3-7.8-3.5
+		c-2.2-2.2-3.3-5-3.5-7.8c-2.8,3.1-2.7,8,0.3,11C1095.7,51.2,1100.5,51.3,1103.6,48.5z"/>
+	<g id="sensor.front_door_contact">
+		<g>
+			<g>
+				<rect id="door_12_" x="769.6" y="664.7" class="st14" width="62.6" height="10.2"/>
+			</g>
+		</g>
+	</g>
+	<path class="st1" d="M897,751.8v-10.2h-50.1v-71.8v-5.1V564.1h13.9v-10.3h-13.9v-39.4H969v39.4h-17.8v10.3h28v-49.7h1.5v-10.2
+		H767.4V558h69.2v106.7h-4.4v10.2h4.5v76.9H897z M777.7,547.7v-33.3h59v33.3H777.7z"/>
+	<rect id="sensor.office_window_contact_1_" x="1144.1" y="741.6" class="st15" width="94.9" height="10.2"/>
+	<rect id="sensor.bedroom_window_contact" x="1154.8" y="198.1" class="st14" width="94.9" height="10.3"/>
+	<rect id="sensor.bathroom_window_contact" x="810" y="159.3" class="st14" width="46.3" height="10.3"/>
+	<rect id="sensor.backdoor_slider_contact" x="552.3" y="198.1" class="st14" width="96.1" height="10.3"/>
+	<polygon class="st1" points="530.3,227.4 530.3,208.4 552.3,208.4 552.3,198.1 530.3,198.1 530.3,158.4 460,158.4 460,168.7 
+		520,168.7 520,227.4 	"/>
+	<rect id="Kitchen_window" x="411.6" y="158.4" class="st15" width="48.3" height="10.3"/>
+	<rect id="sensor.office_window_contact" x="897" y="741.6" class="st14" width="94.9" height="10.2"/>
+	<rect x="275.7" y="158.4" class="st1" width="135.9" height="10.3"/>
+	<rect id="sensor.catio_door_contact" x="179.9" y="158.4" class="st14" width="95.8" height="10.3"/>
+	<rect id="sensor.front_right_window_contact" x="423.5" y="701.9" class="st14" width="76.7" height="10.2"/>
+	<rect id="front_bay_window" x="511.3" y="701.8" class="st15" width="116.2" height="10.4"/>
+	<rect id="sensor.front_left_window_contact" x="639.5" y="701.8" class="st14" width="76.5" height="10.4"/>
+	<rect id="sensor.garage_door" x="43.3" y="787.4" class="st14" width="322.8" height="10.6"/>
+	<rect x="787" y="428.2" class="st1" width="46.6" height="26"/>
+	<rect x="962.4" y="228.7" class="st1" width="22.1" height="47.7"/>
+	<rect x="783.5" y="541.6" class="st1" width="47.4" height="17.9"/>
+	
+		<rect x="989.9" y="473.1" transform="matrix(6.123234e-17 -1 1 6.123234e-17 536.2758 1492.5114)" class="st2" width="49" height="10.1"/>
+	<polygon class="st1" points="1044.8,499.5 1034.5,499.5 1034.5,504.2 1029.7,504.2 1029.7,514.4 1034.5,514.4 1034.5,741.6 
+		991.9,741.6 991.9,751.8 1144.1,751.8 1144.1,741.6 1044.8,741.6 	"/>
+	<g>
+		<rect x="1026.3" y="514.4" class="st16" width="3.4" height="49"/>
+		<path class="st16" d="M1029.4,563.2c-26.9,0-48.8-21.8-48.8-48.8"/>
+		<line class="st16" x1="980.5" y1="514.4" x2="1026.9" y2="514.4"/>
+	</g>
+	<g>
+		<rect x="1044.6" y="450.3" class="st16" width="49" height="3.4"/>
+		<path class="st16" d="M1093.4,450.6c0,26.9-21.8,48.8-48.8,48.8"/>
+		<line class="st16" x1="1044.6" y1="499.5" x2="1044.6" y2="453.1"/>
+	</g>
+	<g>
+		<rect x="956" y="386.1" class="st16" width="3.4" height="49"/>
+		<path class="st16" d="M956.3,386.3c26.9,0,48.8,21.8,48.8,48.8"/>
+		<line class="st16" x1="1005.2" y1="435.1" x2="958.8" y2="435.1"/>
+	</g>
+	<path class="st1" d="M1249.7,198.1v10.3h18.9V478H1105v-42.8h-100.1v10.2h29.6v5.1h10.3v-5.1h50v93.7h173.8v202.5H1239v10.2h39.9
+		V198.1H1249.7z M1268.5,528.8H1105v-40.6h163.5V528.8z"/>
+	<g id="sensor.blink_garage_temperature">
+		<circle class="st6" cx="309.6" cy="841.3" r="29.2"/>
+		<text transform="matrix(1 0 0 1 292.6447 852.2583)" class="st3 st7 st8">--</text>
+	</g>
+	<g id="sensor.front_door_temperature">
+		<circle class="st6" cx="721" cy="658.1" r="29.2"/>
+		<text transform="matrix(1 0 0 1 704.0233 669.1122)" class="st3 st7 st8">--</text>
+	</g>
+	<g id="sensor.office_window_temperature">
+		<circle class="st6" cx="999.9" cy="707" r="29.2"/>
+		<text transform="matrix(1 0 0 1 982.9371 718.0494)" class="st3 st7 st8">--</text>
+	</g>
+	<g id="sensor.bedroom_window_temperature">
+		<circle class="st6" cx="1228.8" cy="247.2" r="29.2"/>
+		<text transform="matrix(1 0 0 1 1211.826 258.2265)" class="st3 st7 st8">--</text>
+	</g>
+	<g>
+		
+			<rect x="296.3" y="283.1" transform="matrix(0.5285 -0.8489 0.8489 0.5285 -95.0461 397.3631)" class="st16" width="27.8" height="2.3"/>
+		
+			<rect x="312.1" y="283.7" transform="matrix(-0.471 -0.8822 0.8822 -0.471 228.2641 706.5696)" class="st16" width="27.8" height="2.3"/>
+		<g>
+			
+				<rect x="214.7" y="283.1" transform="matrix(0.5285 -0.8489 0.8489 0.5285 -133.499 328.129)" class="st16" width="27.8" height="2.3"/>
+			
+				<rect x="230.5" y="283.7" transform="matrix(-0.471 -0.8822 0.8822 -0.471 108.3022 634.6259)" class="st16" width="27.8" height="2.3"/>
+		</g>
+	</g>
+	<g>
+		<rect x="947.9" y="307.8" class="st16" width="2.8" height="57.3"/>
+		<rect x="945.1" y="365.1" class="st16" width="2.8" height="57.3"/>
+	</g>
+	<g>
+		
+			<rect x="1070" y="184.9" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 1284.9385 -857.9528)" class="st16" width="2.8" height="57.1"/>
+		
+			<rect x="1013" y="182.1" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 1225.0485 -803.6585)" class="st16" width="2.8" height="57.1"/>
+	</g>
+	<line class="st16" x1="860.4" y1="553.8" x2="951.3" y2="553.8"/>
+	<g>
+		<rect x="180.7" y="435.4" class="st16" width="4.3" height="61.3"/>
+		<path class="st16" d="M184.6,496.5c-33.6,0-61-27.3-61-61"/>
+		<line class="st16" x1="123.4" y1="435.4" x2="181.5" y2="435.4"/>
+	</g>
+</g>
+<g id="Isolation_Mode">
+	<g id="light.office_lights_1_">
+		<g id="off-layer_3_">
+			<path class="st6" d="M945.7,498.4c-13.2,0-23.9-10.7-23.9-23.9c0-13.2,10.7-23.9,23.9-23.9c13.2,0,23.9,10.7,23.9,23.9
+				C969.7,487.7,959,498.4,945.7,498.4z"/>
+			<path class="st17" d="M945.7,451.5c12.7,0,22.9,10.3,22.9,22.9c0,12.7-10.3,22.9-22.9,22.9c-12.7,0-22.9-10.3-22.9-22.9
+				C922.8,461.8,933.1,451.5,945.7,451.5 M945.7,449.5c-13.8,0-24.9,11.2-24.9,24.9c0,13.8,11.2,24.9,24.9,24.9
+				c13.8,0,24.9-11.2,24.9-24.9C970.7,460.7,959.5,449.5,945.7,449.5L945.7,449.5z"/>
+		</g>
+		<path id="sun_1_" class="st3" d="M945.7,465.3c5.1,0,9.1,4.1,9.1,9.1s-4.1,9.1-9.1,9.1s-9.1-4.1-9.1-9.1
+			C936.6,469.4,940.7,465.3,945.7,465.3 M945.7,469c-3,0-5.5,2.5-5.5,5.5s2.5,5.5,5.5,5.5c3,0,5.5-2.5,5.5-5.5S948.8,469,945.7,469
+			 M945.7,456.1l4.4,6.3c-1.4-0.5-2.8-0.8-4.4-0.8s-3,0.2-4.4,0.8L945.7,456.1 M929.8,465.3l7.7-0.7c-1.1,0.9-2.1,2-2.8,3.4
+			c-0.8,1.4-1.2,2.7-1.6,4.2L929.8,465.3 M929.9,483.7l3.3-6.9c0.2,1.5,0.8,2.8,1.6,4.2c0.8,1.4,1.8,2.5,2.8,3.4L929.9,483.7
+			 M961.7,465.3l-3.3,7c-0.2-1.5-0.8-2.8-1.6-4.2c-0.8-1.4-1.7-2.5-2.8-3.4L961.7,465.3 M961.7,483.7l-7.6,0.7
+			c1.1-0.9,2-2.1,2.8-3.4c0.8-1.4,1.2-2.7,1.6-4.2L961.7,483.7 M945.7,492.9l-4.4-6.3c1.4,0.5,2.8,0.8,4.4,0.8c1.5,0,3-0.3,4.4-0.8
+			L945.7,492.9z"/>
+	</g>
+	<g id="light.office_lights_2_">
+		<circle id="off-layer_4_" class="st6" cx="868.9" cy="461.7" r="22.1"/>
+		<path id="sun_3_" class="st3" d="M868.9,453.6c4.5,0,8.1,3.6,8.1,8.1s-3.6,8.1-8.1,8.1s-8.1-3.6-8.1-8.1
+			C860.8,457.2,864.4,453.6,868.9,453.6 M868.9,456.8c-2.7,0-4.9,2.2-4.9,4.9s2.2,4.9,4.9,4.9s4.9-2.2,4.9-4.9
+			S871.6,456.8,868.9,456.8 M868.9,445.4l3.9,5.6c-1.2-0.4-2.5-0.7-3.9-0.7s-2.7,0.2-3.9,0.7L868.9,445.4 M854.8,453.6l6.8-0.6
+			c-1,0.8-1.9,1.8-2.5,3c-0.7,1.2-1.1,2.4-1.4,3.7L854.8,453.6 M854.9,469.9l2.9-6.1c0.2,1.3,0.7,2.5,1.4,3.7s1.6,2.2,2.5,3
+			L854.9,469.9 M883,453.6l-2.9,6.2c-0.2-1.3-0.7-2.5-1.4-3.7s-1.5-2.2-2.5-3L883,453.6 M883,469.9l-6.7,0.6c1-0.8,1.8-1.9,2.5-3
+			c0.7-1.2,1.1-2.4,1.4-3.7L883,469.9 M868.9,478l-3.9-5.6c1.2,0.4,2.5,0.7,3.9,0.7c1.3,0,2.7-0.3,3.9-0.7L868.9,478z"/>
+	</g>
+</g>
+</svg>

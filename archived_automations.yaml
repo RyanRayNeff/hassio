@@ -1,0 +1,83 @@
+# Kicks on the backyard sprinkler 40 minutes after the hour, unless it is raining, or will rain in 1 hour.
+# Origionally built using a wemo switch with the name Backyard Sprinkler
+- action:
+  - data:
+      entity_id: switch.backyard_sprinkler
+    service: switch.turn_on
+  alias: Back Yard Sprinkler On
+  condition:
+    condition: and
+    conditions:
+    - condition: sun
+      after: sunrise
+      after_offset: '1:30:00'
+      before: sunset
+      before_offset: '-1:00:00'
+    - condition: numeric_state
+      entity_id: sensor.weather_precipitation
+      below: '0.1'
+    - condition: numeric_state
+      entity_id: sensor.weather_in_1_hours_precipitation
+      below: '0.1'
+  id: '1507066866330'
+  trigger:
+  - minutes: 40
+    platform: time
+    seconds: 0
+# Turns off the backyard sprinkler 3 minutes after it turns on:
+# Origionally built using a wemo switch with the name Backyard Sprinkler
+- action:
+  - data:
+      entity_id: switch.backyard_sprinkler
+    service: switch.turn_off
+  alias: Back Yard Sprinkler Off
+  condition: []
+  id: '1507066866331'
+  trigger:
+  - entity_id: switch.backyard_sprinkler
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 3
+
+# Kicks on the frontyard sprinkler 36 minutes after the hour, unless it is raining, or will rain in 1 hour.
+# Origionally built using a wemo switch with the name Sprinkler Front yard
+- action:
+  - data:
+      entity_id: switch.sprinkler_front_yard
+    service: switch.turn_on
+  alias: Front Yard Sprinkler On
+  condition:
+    condition: and
+    conditions:
+    - condition: sun
+      after: sunrise
+      after_offset: '1:00:00'
+      before: sunset
+      before_offset: '-1:00:00'
+    - condition: numeric_state
+      entity_id: sensor.weather_precipitation
+      below: '0.1'
+    - condition: numeric_state
+      entity_id: sensor.weather_in_1_hours_precipitation
+      below: '0.1'
+  id: '1507066866328'
+  trigger:
+  - minutes: 36
+    platform: time
+    seconds: 0
+- action:
+  - data:
+      entity_id: switch.sprinkler_front_yard
+    service: switch.turn_off
+  alias: Front Yard Sprinkler Off
+  condition: []
+  id: '1507066866329'
+  trigger:
+  - entity_id: switch.sprinkler_front_yard
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 3

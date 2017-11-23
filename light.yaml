@@ -1,0 +1,163 @@
+# These lights are connected to a Smartthings hub, connected to Hass.io Via vkorns MQTT Bridge
+# IMPORTANT: If you are using the Smartthings hub, you must keep the retain flag to false.
+# If you initially configure the devices with a retain: true, and later change it, you 
+# will see odd behavior. If that happens, you must uninstall then re-install the mqtt hass.io
+# component to refresh the database.
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Office Lights"
+  state_topic: "smartthings/Office Lights/switch/state"
+  command_topic: "smartthings/Office Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle dimmer 14294
+- platform: mqtt
+  name: "Dining Room Lights"
+  state_topic: "smartthings/Dining Room Lights/switch/state"
+  command_topic: "smartthings/Dining Room Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  brightness_state_topic: "smartthings/Dining Room Lights/level/state"
+  brightness_command_topic: "smartthings/Dining Room Lights/level/cmd"
+  brightness_scale: 99
+  brightness_value_template: '{{ value }}'
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Bathroom Fan Lights"
+  state_topic: "smartthings/Bathroom Fan Lights/switch/state"
+  command_topic: "smartthings/Bathroom Fan Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Bathroom Vanity Lights"
+  state_topic: "smartthings/Bathroom Vanity Lights/switch/state"
+  command_topic: "smartthings/Bathroom Vanity Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Entryway Lights"
+  state_topic: "smartthings/Entryway Lights/switch/state"
+  command_topic: "smartthings/Entryway Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Garage Lights"
+  state_topic: "smartthings/Garage Lights/switch/state"
+  command_topic: "smartthings/Garage Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Hallway Lights"
+  state_topic: "smartthings/Hallway Lights/switch/state"
+  command_topic: "smartthings/Hallway Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Kitchen Lights"
+  state_topic: "smartthings/Kitchen Lights/switch/state"
+  command_topic: "smartthings/Kitchen Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Laundry Room Light 2"
+  state_topic: "smartthings/Laundry Room Light 2/switch/state"
+  command_topic: "smartthings/Laundry Room Light 2/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Laundry Room Light One"
+  state_topic: "smartthings/Laundry Room Light One/switch/state"
+  command_topic: "smartthings/Laundry Room Light One/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Library Lights"
+  state_topic: "smartthings/Library Lights/switch/state"
+  command_topic: "smartthings/Library Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Living Room Lights"
+  state_topic: "smartthings/Living Room Lights/switch/state"
+  command_topic: "smartthings/Living Room Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Porch Lights"
+  state_topic: "smartthings/Porch Lights/switch/state"
+  command_topic: "smartthings/Porch Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "String Lights"
+  state_topic: "smartthings/String Lights/switch/state"
+  command_topic: "smartthings/String Lights/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2

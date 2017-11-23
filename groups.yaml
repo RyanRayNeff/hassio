@@ -1,0 +1,361 @@
+####GROUPS####
+pi_sensors:
+  name: Pi Sensors
+  entities:
+    - sensor.cpu_used
+    - sensor.disk_used_home
+    - sensor.disk_free_
+    - sensor.ram_available
+    - sensor.ram_used
+    - sensor.received_eth0
+    - sensor.since_last_boot
+temps:
+  name: Temp readings
+  entities:
+    - sensor.blink_garage_temperature
+    - sensor.front_door_temperature
+    - sensor.garage_temp__temperature
+    - sensor.lemon_tree_temperature
+    - sensor.office_window_temperature
+    - sensor.weather_temperature
+    - sensor.bedroom_window_temperature
+    - sensor.backdoor_slider_temperature
+    - sensor.bathroom_window_temperature
+    - sensor.catio_door_temperature
+weather:
+  name: Weather
+  entities:
+    - sun.sun
+    - sensor.weather_temperature
+    - sensor.weather_precipitation
+    - sensor.weather_in_1_hours_precipitation
+unused_wemos:
+  name: Unused Wemo's
+  entities:
+    - switch.wemo_mini_3
+    - switch.wemo_mini_4
+
+# This is hidden from the front end using customize.yaml
+bedtime_shutdown:
+  name: Bedtime
+  entities:
+  - light.living_room_lights
+  - switch.living_room_lamp
+  - light.entryway_lights
+  - remote.harmony_hub
+  - media_player.living_room_tv
+  - light.kitchen_lights
+  - light.dining_room_lights
+  - light.library_lights
+  - light.string_lights
+  - lights.hallway_lights
+  - light.garage_lights
+  - light.laundry_room_light_one
+  - light.laundry_room_light_2
+  - light.office_lights
+  - light.office_lamp
+  - switch.foot_heater 
+
+# This is hidden from the front end using customize.yaml
+welcome_home:
+  name: Welcome Home
+  entities:
+  - light.entryway_lights
+  - light.hallway_lights
+  - light.dining_room_lights
+  - light.kitchen_lights
+  - light.living_room_lights
+
+living_room:
+  name: Living Room
+  entities:
+  - light.living_room_lights
+  - switch.living_room_lamp
+  - light.entryway_lights
+  - light.tv_lights
+  - sensor.front_left_window_contact_template
+  - sensor.front_right_window_contact_template
+  - remote.harmony_hub
+  - media_player.living_room_tv
+  - sensor.front_door_contact_template
+  - sensor.front_door_temperature
+  - automation.welcome_home_lights
+  - automation.tv_lights_on_at_dusk
+  - automation.tv_lights_bedtime_mode
+  - automation.tv_lights_off_at_dawn
+  - automation.tv_lights_on_when_roku_off
+  - automation.tv_lights_off_when_roku_on
+  - automation.living_room_light_on_turns_off_tv_lights
+  - automation.living_room_lights_off_turns_on_tv_lights
+
+kitchen:
+  name: kitchen
+  entities:
+  - light.kitchen_lights
+  - media_player.kitchen_speaker
+
+dining_room:
+  name: Dining Room
+  entities:
+  - light.dining_room_lights
+  - sensor.backdoor_slider_temperature
+  - sensor.backdoor_slider_contact_template
+  - automation.slider_door_reminder
+
+library:
+  name: Library
+  entities:
+  - light.library_lights
+  - sensor.catio_door_temperature
+  - sensor.catio_door_contact_template
+outside:
+  name: Outside
+  entities:
+  - light.string_lights
+  - light.porch_lights
+
+hallway:
+  name: Hallway
+  entities:
+  - lights.hallway_lights
+
+bedroom:
+  name: Bedroom
+  entities:
+  - switch.white_noise
+  - light.hue_color_lamp_1
+  - light.hue_color_lamp_2
+  - light.hue_color_lamp_3
+  - light.bed_lamp
+  - sensor.bedroom_window_temperature
+  - sensor.bedroom_window_contact_template
+  - automation.bedside_lamp_on_at_9pm
+  - automation.white_noise_machine_on
+  - automation.white_noise_machine_off
+
+garage:
+  name: Garage
+  entities:
+  - light.garage_lights
+  - sensor.garage_door
+  - switch.garage_heater
+  - sensor.garage_temp__temperature
+  - sensor.garage_temp__humidity
+  - sensor.garage_temp__battery
+  - media_player.garage_speaker
+  - automation.arm_camera_when_garage_door_opens
+  - automation.notify_when_garage_door_closes
+
+blink_camera:
+  name: Blink Camera
+  entities:
+  - sensor.blink_garage_temperature
+  - sensor.blink_garage_battery
+  - binary_sensor.blink_armed_status
+  - sensor.blink_garage_notifications
+  - binary_sensor.blink_garage_motion_enabled
+  - camera.garage
+
+lemon_tree:
+  name: Lemon Tree
+  entities:
+  - plant.lemon_tree
+  - switch.lemon_lights
+  - switch.sonoff3
+  - sensor.lemon_tree_moisture
+  - sensor.lemon_tree_battery
+  - sensor.lemon_tree_temperature
+  - sensor.lemon_tree_conductivity
+  - sensor.lemon_tree_light_intensity
+  - automation.lemon_lights_off_at_dusk
+  - automation.lemon_lights_on_at_dawn
+  - automation.lemon_water_emergency_notification
+  - automation.lemon_water_off_after_2_cups
+  - automation.lemon_water_on_monday_wednesday_and_friday
+master_bath:
+  name: Master Bath
+  entities:
+  - light.bathroom_fan_lights
+  - light.bathroom_vanity_lights
+  - sensor.bathroom_window_temperature
+  - sensor.bathroom_window_contact_template
+laundry_room:
+  name: Laundry Room
+  entities:
+  - light.laundry_room_light_one
+  - light.laundry_room_light_2
+  - sensor.xiaomi_motion__motion
+  - sensor.xiaomi_motion__battery
+  - automation.laundry_room_lights_on
+  - automation.laundry_room_lights_off_motion
+office:
+  name: office
+  entities:
+  - light.office_lights
+  - light.office_lamp
+  - switch.foot_heater
+  - automation.foot_heater_auto_off_after_1_hour
+  - sensor.office_window_contact_template
+  - sensor.office_window_temperature
+
+#### WINDOWS ####
+windows:
+  name: All windows
+  entities:
+  - sensor.office_window_contact_template
+  - sensor.bedroom_window_contact_template
+  - sensor.bathroom_window_contact_template
+  - sensor.front_left_window_contact_template
+  - sensor.front_right_window_contact_template
+
+#### DOORS ####
+doors:
+  name: All Doors
+  entities:
+  # Instead of the raw data, we want the template instead to get the fun icons
+  - sensor.front_door_contact_template
+  - sensor.catio_door_contact_template
+  - sensor.backdoor_slider_contact_template
+  - sensor.garage_door_template
+
+#### Ryans Fitbit ####
+ryans_fitbit:
+  name: Ryan's Fitbit
+  entities:
+  - sensor.charge_2_battery
+  - sensor.bmi
+  - sensor.body_fat
+  - sensor.calories
+  - sensor.tracker_calories
+  - sensor.tracker_distance
+  - sensor.calories_bmr
+  - sensor.awakenings_count
+  - sensor.distance
+  - sensor.minutes_after_wakeup
+  - sensor.minutes_fairly_active
+  - sensor.minutes_lightly_active
+  - sensor.minutes_sedentary
+  - sensor.minutes_very_active
+  - sensor.resting_heart_rate
+  - sensor.sleep_time_in_bed
+  - sensor.sleep_start_time
+  - sensor.sleep_minutes_to_fall_asleep
+  - sensor.sleep_minutes_awake
+  - sensor.sleep_minutes_asleep
+  - sensor.sleep_efficiency
+  - sensor.steps
+  - sensor.weight
+  - sensor.minutes_very_active
+  - sensor.tracker_minutes_sedentary
+  - sensor.minutes_lightly_active
+  - sensor.tracker_minutes_fairly_active
+  - sensor.tracker_minutes_lightly_active
+  - sensor.tracker_minutes_very_active
+  - sensor.tracker_steps
+
+
+#### UNUSED WINDOW SENSOR DATA ####
+unused_window:
+  name: Unused Window Sensor Data
+  entities:
+  - sensor.bedroom_window_acceleration
+  - sensor.bedroom_window_threeaxis
+  - sensor.office_window_acceleration
+  - sensor.office_window_threeaxis
+  - sensor.catio_door_acceleration
+  - sensor.catio_door_threeaxis
+  - sensor.bathroom_window_acceleration
+  - sensor.bathroom_window_threeaxis
+
+#### UNUSED DOOR SENSOR DATA ####
+unused_door:
+  name: Unused Door Sensor Data
+  entities:
+  - sensor.front_door_acceleration
+  - sensor.front_door_threeaxis
+  - sensor.backdoor_slider_acceleration 
+  - sensor.backdoor_slider_threeaxis
+  - sensor.catio_door_acceleration
+  - sensor.catio_door_threeaxis
+#### Batteries Group ####
+batteries:
+  name: Batteries
+  entities:
+  # oddballs
+  - sensor.blink_garage_battery
+  - sensor.garage_temp__battery
+  - sensor.xiaomi_motion__battery
+  - sensor.lemon_tree_battery
+  # windows
+  - sensor.office_window_battery
+  - sensor.bedroom_window_battery
+  - sensor.bathroom_window_battery
+  - sensor.front_left_window_battery
+  - sensor.front_right_window_battery
+  # doors
+  - sensor.backdoor_slider_battery
+  - sensor.catio_door_battery
+  - sensor.front_door_battery
+  - sensor.xiaomi_mi_cube__battery
+  - sensor.xiaomi_zigbee_aqara_button_aq2__battery
+  - sensor.charge_2_battery
+#### SECURITY AUTOMATIONS ####
+security_automations:
+  name: Security Automations
+  entities:
+     - automation.arm_camera_when_garage_door_opens
+     - automation.notify_when_garage_door_closes
+     - automation.something_has_opened_on_a_weeknight
+     - automation.jasons_home
+
+#### VIEWS ####
+rooms_view:
+  view: yes
+  name: Rooms
+  entities:
+    - group.office
+    - group.bedroom
+    - group.laundry_room
+    - group.master_bath
+    - group.garage
+    - group.dining_room
+    - group.kitchen
+    - group.living_room
+    - group.outside
+    - group.hallway
+
+security_view:
+  view: yes
+  name: Security
+  entities:
+    - group.blink_camera
+    - group.windows
+    - group.doors
+    - group.security_automations
+
+batteries_view:
+  view: yes
+  name: Batteries
+  entities:
+    - group.batteries
+
+home_stats:
+  view: yes
+  name: Home Stats
+  entities:
+    - history_graph.lemon_stats
+    - history_graph.temperature
+
+bio_stats:
+  view: yes
+  name: Bio Stats
+  entities:
+    - group.ryans_fitbit
+
+unused_data:
+  view: yes
+  name: Unused Data
+  entities:
+    - group.unused_door
+    - group.unused_window
+    - group.pi_sensors

@@ -1,0 +1,159 @@
+      name: Demo Floorplan
+      image: /local/custom_ui/floorplan/everett-house.svg
+      stylesheet: /local/custom_ui/floorplan/floorplan.css
+      
+      # These options are optional
+      # warnings:                  # enable warnings (to find out why things might ot be working correctly)
+      # pan_zoom:                  # enable experimental panning / zooming
+      hide_app_toolbar:          # hide the application toolbar (when used as a custom panel)
+      # date_format: DD-MMM-YYYY   # Date format to use in hover-over text
+      
+      last_motion_entity: sensor.template_last_motion
+      last_motion_class: last-motion
+
+      groups:
+
+        - name: Sensors
+          entities:
+            - sensor.blink_garage_temperature
+            - sensor.front_door_temperature
+            - sensor.garage_temp__temperature
+            - sensor.lemon_tree_temperature
+            - sensor.office_window_temperature
+            - sensor.weather_temperature
+            - sensor.bedroom_window_temperature
+            - sensor.backdoor_slider_temperature
+            - sensor.bathroom_window_temperature
+            - sensor.catio_door_temperature
+          #text_template: '${entity.state ? entity.state : "unknown"}'
+          # An example of rounding up a number, i.e. a temperature of 90.1 becomes 91
+          text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'  
+          class_template: '
+            var temp = parseFloat(entity.state.replace("°", ""));
+            if (temp < 10)
+              return "temp-low";
+            else if (temp < 30)
+              return "temp-medium";
+            else
+              return "temp-high";
+            '
+
+        - name: Lights
+          entities:
+            # - group.kitchen_lights
+            # - group.living_room_lights
+            - light.office_lights
+            - light.dining_room_lights
+            - light.bathroom_fan_lights
+            - light.bathroom_vanity_lights
+            - light.entryway_lights
+            - light.garage_lights
+            - light.hallway_lights
+            - light.kitchen_lights
+            - light.laundry_room_light_2
+            - light.laundry_room_light_one
+            - light.library_lights
+            - light.living_room_lights
+            - light.porch_lights
+            - light.string_lights
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'
+          action:
+            domain: homeassistant   # This optional parameter allows you to use other services such as homeassistant.toggle like here.
+            service: toggle
+
+        - name: Switches
+          entities:
+             - switch.doorbell
+          states:
+            - state: 'on'
+              class: 'doorbell-on'
+            - state: 'off'
+              class: 'doorbell-off'
+
+        - name: Windows
+          entities:
+            - sensor.office_window_contact
+            - sensor.bedroom_window_contact
+            - sensor.bathroom_window_contact
+            - sensor.front_left_window_contact
+            - sensor.front_right_window_contact
+            - sensor.front_door_contact
+            - sensor.catio_door_contact
+            - sensor.backdoor_slider_contact
+            - sensor.garage_door
+          states:
+            - state: 'unknown'
+              class: 'contact-unknown'
+            - state: 'closed'
+              class: 'contact-closed'
+            - state: 'open'
+              class: 'contact-open'
+
+        - name: NVR
+          entities:
+             - binary_sensor.blue_iris_nvr
+          text_template: '${(entity.state === "on") ? "online" : "offline"}'
+          states:
+            - state: 'off'
+              class: 'danger-text'
+            - state: 'on'
+              class: 'success-text'
+
+        - name: Alarm Panel
+          entities:
+             - alarm_control_panel.alarm
+          states:
+            - state: 'armed_away'
+              class: 'alarm-armed'
+            - state: 'armed_home'
+              class: 'alarm-armed'
+            - state: 'disarmed'
+              class: 'alarm-disarmed'
+
+        - name: Binary sensors
+          entities:
+            - binary_sensor.front_hallway
+            - binary_sensor.kitchen
+            - binary_sensor.master_bedroom
+            - binary_sensor.theatre_room
+          states:
+            - state: 'off'
+              class: 'info-background'
+            - state: 'on'
+              class: 'warning-background'
+          state_transitions:
+            - name: On to off
+              from_state: 'on'
+              to_state: 'off'
+              duration: 10
+
+        - name: Cameras
+          entities:
+            - camera.hallway
+            - camera.driveway
+            - camera.front_door
+            - camera.backyard
+          states:
+            - state: 'idle'
+              class: 'camera-idle'
+              
+#        - name: thermostat_temp
+#          entities:
+#            - climate.downstairs
+#            - climate.upstairs
+#          text_template: '${entity.attributes.current_temperature ? entity.attributes.current_temperature : "undefined"}'
+#
+# The above text_template uses extended attributes from the climate.* objects to get current temperature.
+
+#        - name: text_states
+#          entities:
+#            - sensor.downstairs_thermostat_humidity
+#            - sensor.dark_sky_temperature
+#            - sensor.last_message
+#          text_template: '${entity.state ? entity.state.replace(/\s{2,}/g,"") : "undefined"}'
+#
+# The above text_template uses jQuery syntax to search and replace any instance of 2 consecutive (or more) spaces in a string of text.

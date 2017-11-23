@@ -1,0 +1,157 @@
+#### Sonoff inline switches flashed with Tasmota firmware ####
+switch.foot_heater:
+  icon: mdi:fire
+  emulated_hue_hidden: false
+switch.sonoff3:
+  friendly_name: Lemon Water
+  icon: mdi:water
+ # emulated_hue_hidden: false
+switch.living_room_lamp:
+  icon: mdi:lamp
+  emulated_hue_hidden: false
+switch.white_noise:
+  icon: mdi:creation
+  emulated_hue_hidden: false
+
+#### WEMO SWITCHES ####
+switch.lemon_lights:
+  icon: mdi:weather-sunset-down
+switch.raspberry_pie:
+  icon: mdi:raspberrypi
+switch.garage_heater:
+  icon: mdi:fire
+
+#####LIGHTS####
+light.tv_lights:
+  icon: mdi:television
+light.bathroom_fan_lights:
+  icon: mdi:fan
+light.bed_lamp:
+  icon: mdi:lamp
+
+####SENSORS####
+sensor.blink_garage_battery:
+  friendly_name: Blink Battery
+  icon: mdi:battery
+binary_sensor.blink_armed_status:
+  friendly_name: Armed Status
+  icon: mdi:shield
+binary_sensor.blink_garage_motion_enabled:
+  friendly_name: Motion Enabled
+  icon: mdi:run-fast
+sensor.blink_garage_notifications:
+  friendly_name: Blink Notifications
+  icon: mdi:email-alert
+
+sensor.xiaomi_motion__battery:
+  friendly_name: Motion Detector Battery
+  icon: mdi:battery
+sensor.xiaomi_motion__motion:
+  friendly_name: Motion detector
+  icon: mdi:run-fast
+
+sensor.lemon_tree_battery:
+  icon: mdi:battery
+sensor.lemon_tree_conductivity:
+  icon: mdi:flash
+sensor.lemon_tree_moisture:
+  icon: mdi:water-percent
+sensor.lemon_tree_light_intensity:
+  icon: mdi:sunglasses
+
+sensor.garage_temp__battery:
+  icon: mdi:battery
+  friendly_name: Garage temp sensor battery
+sensor.garage_temp__humidity:
+  friendly_name: Garage Humidity
+  icon: mdi:water-percent
+sensor.garage_temp__temperature:
+  friendly_name: Garage Temperature
+
+#### Office Window ####
+sensor.office_window_acceleration:
+  friendly_name: Office Window Accleration
+sensor.office_window_battery:
+  icon: mdi:battery
+  friendly_name: Office Window Battery
+sensor.office_window_contact:
+  friendly_name: Office Window Contact
+sensor.office_window_temperature:
+  friendly_name: Office Window Temperature
+sensor.office_window_threeaxis:
+  friendly_name: Office Window threeAxis
+
+#### Bathroom Window ####
+sensor.bathroom_window_acceleration:
+  friendly_name: Bathroom Window Accleration
+sensor.bathroom_window_battery:
+  icon: mdi:battery
+  friendly_name: Bathroom Window Battery
+sensor.bathroom_window_contact:
+  friendly_name: Bathroom Window Contact
+sensor.bathroom_window_temperature:
+  friendly_name: Bathroom Window Temperature
+sensor.bathroom_window_threeaxis:
+  friendly_name: Bathroom Window threeAxis
+
+#### Bedroom Window ####
+sensor.bedroom_window_acceleration:
+  friendly_name: Bedroom Window Accleration
+sensor.bedroom_window_battery:
+  icon: mdi:battery
+  friendly_name: Bedroom Window Battery
+sensor.bedroom_window_contact:
+  friendly_name: Bedroom Window Contact
+sensor.bedroom_window_temperature:
+  friendly_name: Bedroom Window Temperature
+sensor.bedroom_window_threeaxis:
+  friendly_name: Bedroom Window threeAxis
+
+  #### Front Door ####
+sensor.front_door_acceleration:
+  friendly_name: Frontdoor Accleration
+sensor.front_door_battery:
+  icon: mdi:battery
+  friendly_name: Frontdoor Battery
+sensor.front_door_contact:
+  friendly_name: Frontdoor Contact
+  icon: mdi:door
+sensor.front_door_temperature:
+  friendly_name: Frontdoor Temperature
+sensor.front_door_threeaxis:
+  friendly_name: Frontdoor threeAxis
+
+#### Catio Door ####
+sensor.catio_door_acceleration:
+  friendly_name: Catio Door Accleration
+sensor.catio_door_battery:
+  icon: mdi:battery
+  friendly_name: Catio Door Battery
+sensor.catio_door_contact:
+  friendly_name: Catio Door Contact
+  icon: mdi:door
+sensor.catio_door_temperature:
+  friendly_name: Catio Door Temperature
+sensor.catio_door_threeaxis:
+  friendly_name: Catio Door threeAxis
+
+#### Backdoor Slider ####
+sensor.backdoor_slider_acceleration:
+  friendly_name: Backdoor Slider Accleration
+sensor.backdoor_slider_battery:
+  icon: mdi:battery
+  friendly_name: Backdoor Slider Battery
+sensor.backdoor_slider_contact:
+  friendly_name: Backdoor Slider Contact
+  icon: mdi:door
+sensor.backdoor_slider_temperature:
+  friendly_name: Backdoor Slider Temperature
+sensor.backdoor_slider_threeaxis:
+  friendly_name: Backdoor Slider threeAxis
+
+#### GROUPS HIDDEN FROM THE FRONT END ####
+# Used in the welcome home automation
+group.welcome_home:
+  hidden: true
+group.bedtime_shutdown:
+  hidden: true
