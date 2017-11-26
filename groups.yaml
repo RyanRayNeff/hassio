@@ -87,6 +87,8 @@ living_room:
   - automation.tv_lights_off_when_roku_on
   - automation.living_room_light_on_turns_off_tv_lights
   - automation.living_room_lights_off_turns_on_tv_lights
+  - automation.entryway_lights_on_when_front_door_opens
+  - automation.entryway_lights_off_5_minutes_after_front_door_closes  
 
 kitchen:
   name: kitchen
@@ -113,6 +115,12 @@ outside:
   entities:
   - light.string_lights
   - light.porch_lights
+  - light.catio_motion_light
+  - light.slider_motion_light
+  - automation.exterior_motion_lights_on_at_dusk
+  - automation.exterior_motion_lights_off_at_dawn
+  - automation.string_lights_turn_off_motion_lights
+  - automation.string_lights_turn_on_motion_lights
 
 hallway:
   name: Hallway
@@ -219,64 +227,65 @@ doors:
   - sensor.garage_door_template
 
 #### Ryans Fitbit ####
-ryans_fitbit:
-  name: Ryan's Fitbit
-  entities:
-  - sensor.charge_2_battery
-  - sensor.bmi
-  - sensor.body_fat
-  - sensor.calories
-  - sensor.tracker_calories
-  - sensor.tracker_distance
-  - sensor.calories_bmr
-  - sensor.awakenings_count
-  - sensor.distance
-  - sensor.minutes_after_wakeup
-  - sensor.minutes_fairly_active
-  - sensor.minutes_lightly_active
-  - sensor.minutes_sedentary
-  - sensor.minutes_very_active
-  - sensor.resting_heart_rate
-  - sensor.sleep_time_in_bed
-  - sensor.sleep_start_time
-  - sensor.sleep_minutes_to_fall_asleep
-  - sensor.sleep_minutes_awake
-  - sensor.sleep_minutes_asleep
-  - sensor.sleep_efficiency
-  - sensor.steps
-  - sensor.weight
-  - sensor.minutes_very_active
-  - sensor.tracker_minutes_sedentary
-  - sensor.minutes_lightly_active
-  - sensor.tracker_minutes_fairly_active
-  - sensor.tracker_minutes_lightly_active
-  - sensor.tracker_minutes_very_active
-  - sensor.tracker_steps
+# ryans_fitbit:
+#   name: Ryan's Fitbit
+#   entities:
+#   - sensor.charge_2_battery
+#   - sensor.bmi
+#   - sensor.body_fat
+#   - sensor.calories
+#   - sensor.tracker_calories
+#   - sensor.tracker_distance
+#   - sensor.calories_bmr
+#   - sensor.awakenings_count
+#   - sensor.distance
+#   - sensor.minutes_after_wakeup
+#   - sensor.minutes_fairly_active
+#   - sensor.minutes_lightly_active
+#   - sensor.minutes_sedentary
+#   - sensor.minutes_very_active
+#   - sensor.resting_heart_rate
+#   - sensor.sleep_time_in_bed
+#   - sensor.sleep_start_time
+#   - sensor.sleep_minutes_to_fall_asleep
+#   - sensor.sleep_minutes_awake
+#   - sensor.sleep_minutes_asleep
+#   - sensor.sleep_efficiency
+#   - sensor.steps
+#   - sensor.weight
+#   - sensor.minutes_very_active
+#   - sensor.tracker_minutes_sedentary
+#   - sensor.minutes_lightly_active
+#   - sensor.tracker_minutes_fairly_active
+#   - sensor.tracker_minutes_lightly_active
+#   - sensor.tracker_minutes_very_active
+#   - sensor.tracker_steps
 
 
 #### UNUSED WINDOW SENSOR DATA ####
-unused_window:
-  name: Unused Window Sensor Data
-  entities:
-  - sensor.bedroom_window_acceleration
-  - sensor.bedroom_window_threeaxis
-  - sensor.office_window_acceleration
-  - sensor.office_window_threeaxis
-  - sensor.catio_door_acceleration
-  - sensor.catio_door_threeaxis
-  - sensor.bathroom_window_acceleration
-  - sensor.bathroom_window_threeaxis
+# unused_window:
+#   name: Unused Window Sensor Data
+#   entities:
+#   - sensor.bedroom_window_acceleration
+#   - sensor.bedroom_window_threeaxis
+#   - sensor.office_window_acceleration
+#   - sensor.office_window_threeaxis
+#   - sensor.catio_door_acceleration
+#   - sensor.catio_door_threeaxis
+#   - sensor.bathroom_window_acceleration
+#   - sensor.bathroom_window_threeaxis
 
 #### UNUSED DOOR SENSOR DATA ####
-unused_door:
-  name: Unused Door Sensor Data
-  entities:
-  - sensor.front_door_acceleration
-  - sensor.front_door_threeaxis
-  - sensor.backdoor_slider_acceleration 
-  - sensor.backdoor_slider_threeaxis
-  - sensor.catio_door_acceleration
-  - sensor.catio_door_threeaxis
+# unused_door:
+#   name: Unused Door Sensor Data
+#   entities:
+#   - sensor.front_door_acceleration
+#   - sensor.front_door_threeaxis
+#   - sensor.backdoor_slider_acceleration 
+#   - sensor.backdoor_slider_threeaxis
+#   - sensor.catio_door_acceleration
+#   - sensor.catio_door_threeaxis
+
 #### Batteries Group ####
 batteries:
   name: Batteries
@@ -346,16 +355,16 @@ home_stats:
     - history_graph.lemon_stats
     - history_graph.temperature
 
-bio_stats:
-  view: yes
-  name: Bio Stats
-  entities:
-    - group.ryans_fitbit
+# bio_stats:
+#   view: yes
+#   name: Bio Stats
+#   entities:
+#     - group.ryans_fitbit
 
-unused_data:
-  view: yes
-  name: Unused Data
-  entities:
-    - group.unused_door
-    - group.unused_window
-    - group.pi_sensors
+# unused_data:
+#   view: yes
+#   name: Unused Data
+#   entities:
+#     - group.unused_door
+#     - group.unused_window
+#     - group.pi_sensors

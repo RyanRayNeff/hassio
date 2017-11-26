@@ -25,7 +25,7 @@ Hass.io running on [Raspberry Pi 3](http://amzn.to/2e3DOBY)
 * [SkyBell HD](http://amzn.to/2dcexIB)
 * [ChromeCast Audios](http://amzn.to/2lE9gNu)
 * Emulated Hue pushes all Switch, Group, input_boolean, script and scene information to Alexa for First Class Control!
-* [SonOff](http://amzn.to/2l2sx8g) and a [Slampher](http://amzn.to/2l2gmIx)!
+* [SonOff](http://amzn.to/2l2sx8g)
 <!-- 
 **Automations:**
 * Voice Notifications via the [AMPs](http://amzn.to/2j18dlT) connected to ChromeCast Audios and [Mixer](http://amzn.to/2v9Zp3x).  Accomplished via the [~~Google~~ Amazon Polly TTS](https://home-assistant.io/components/tts/) component.

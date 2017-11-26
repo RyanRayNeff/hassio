@@ -69,8 +69,6 @@ sensor.garage_temp__temperature:
   friendly_name: Garage Temperature
 
 #### Office Window ####
-sensor.office_window_acceleration:
-  friendly_name: Office Window Accleration
 sensor.office_window_battery:
   icon: mdi:battery
   friendly_name: Office Window Battery
@@ -78,12 +76,12 @@ sensor.office_window_contact:
   friendly_name: Office Window Contact
 sensor.office_window_temperature:
   friendly_name: Office Window Temperature
-sensor.office_window_threeaxis:
-  friendly_name: Office Window threeAxis
+# sensor.office_window_acceleration:
+#   friendly_name: Office Window Accleration
+# sensor.office_window_threeaxis:
+#   friendly_name: Office Window threeAxis
 
 #### Bathroom Window ####
-sensor.bathroom_window_acceleration:
-  friendly_name: Bathroom Window Accleration
 sensor.bathroom_window_battery:
   icon: mdi:battery
   friendly_name: Bathroom Window Battery
@@ -91,12 +89,12 @@ sensor.bathroom_window_contact:
   friendly_name: Bathroom Window Contact
 sensor.bathroom_window_temperature:
   friendly_name: Bathroom Window Temperature
-sensor.bathroom_window_threeaxis:
-  friendly_name: Bathroom Window threeAxis
+# sensor.bathroom_window_acceleration:
+#   friendly_name: Bathroom Window Accleration
+# sensor.bathroom_window_threeaxis:
+#   friendly_name: Bathroom Window threeAxis
 
 #### Bedroom Window ####
-sensor.bedroom_window_acceleration:
-  friendly_name: Bedroom Window Accleration
 sensor.bedroom_window_battery:
   icon: mdi:battery
   friendly_name: Bedroom Window Battery
@@ -104,12 +102,12 @@ sensor.bedroom_window_contact:
   friendly_name: Bedroom Window Contact
 sensor.bedroom_window_temperature:
   friendly_name: Bedroom Window Temperature
-sensor.bedroom_window_threeaxis:
-  friendly_name: Bedroom Window threeAxis
+# sensor.bedroom_window_acceleration:
+#   friendly_name: Bedroom Window Accleration
+# sensor.bedroom_window_threeaxis:
+#   friendly_name: Bedroom Window threeAxis
 
   #### Front Door ####
-sensor.front_door_acceleration:
-  friendly_name: Frontdoor Accleration
 sensor.front_door_battery:
   icon: mdi:battery
   friendly_name: Frontdoor Battery
@@ -118,12 +116,12 @@ sensor.front_door_contact:
   icon: mdi:door
 sensor.front_door_temperature:
   friendly_name: Frontdoor Temperature
-sensor.front_door_threeaxis:
-  friendly_name: Frontdoor threeAxis
+# sensor.front_door_acceleration:
+#   friendly_name: Frontdoor Accleration
+# sensor.front_door_threeaxis:
+#   friendly_name: Frontdoor threeAxis
 
 #### Catio Door ####
-sensor.catio_door_acceleration:
-  friendly_name: Catio Door Accleration
 sensor.catio_door_battery:
   icon: mdi:battery
   friendly_name: Catio Door Battery
@@ -132,12 +130,12 @@ sensor.catio_door_contact:
   icon: mdi:door
 sensor.catio_door_temperature:
   friendly_name: Catio Door Temperature
-sensor.catio_door_threeaxis:
-  friendly_name: Catio Door threeAxis
+# sensor.catio_door_acceleration:
+#   friendly_name: Catio Door Accleration
+# sensor.catio_door_threeaxis:
+#   friendly_name: Catio Door threeAxis
 
 #### Backdoor Slider ####
-sensor.backdoor_slider_acceleration:
-  friendly_name: Backdoor Slider Accleration
 sensor.backdoor_slider_battery:
   icon: mdi:battery
   friendly_name: Backdoor Slider Battery
@@ -146,8 +144,10 @@ sensor.backdoor_slider_contact:
   icon: mdi:door
 sensor.backdoor_slider_temperature:
   friendly_name: Backdoor Slider Temperature
-sensor.backdoor_slider_threeaxis:
-  friendly_name: Backdoor Slider threeAxis
+# sensor.backdoor_slider_acceleration:
+#   friendly_name: Backdoor Slider Accleration
+# sensor.backdoor_slider_threeaxis:
+#   friendly_name: Backdoor Slider threeAxis
 
 #### GROUPS HIDDEN FROM THE FRONT END ####
 # Used in the welcome home automation

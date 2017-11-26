@@ -161,3 +161,25 @@
   retain: false
   optimistic: false
   qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Catio Motion Light"
+  state_topic: "smartthings/Catio Motion Light/switch/state"
+  command_topic: "smartthings/Catio Motion Light/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Slider Motion Light"
+  state_topic: "smartthings/Slider Motion Light/switch/state"
+  command_topic: "smartthings/Slider Motion Light/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2

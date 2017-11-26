@@ -462,3 +462,111 @@
     from: open
     platform: state
     to: closed
+- action:
+  - alias: Turn off motion slider motion light
+    data:
+      entity_id: light.slider_motion_light
+    service: light.turn_off
+  - alias: Turn off motion catio motion light
+    data:
+      entity_id: light.catio_motion_light
+    service: light.turn_off
+  alias: String lights turn off motion lights
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1511664901076'
+  trigger:
+  - entity_id: light.string_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Turn on motion slider motion light
+    data:
+      entity_id: light.slider_motion_light
+    service: light.turn_on
+  - alias: Turn on motion catio motion light
+    data:
+      entity_id: light.catio_motion_light
+    service: light.turn_on
+  alias: String lights turn on motion lights
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1511665012308'
+  trigger:
+  - entity_id: light.string_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - alias: Turn on motion slider motion light
+    data:
+      entity_id: light.slider_motion_light
+    service: light.turn_on
+  - alias: Turn on motion catio motion light
+    data:
+      entity_id: light.catio_motion_light
+    service: light.turn_on
+  alias: Exterior motion lights on at dusk
+  condition:
+  - condition: state
+    entity_id: light.string_lights
+    state: 'off'
+  id: '1511665269233'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - alias: Turn off motion slider motion light
+    data:
+      entity_id: light.slider_motion_light
+    service: light.turn_off
+  - alias: Turn off motion catio motion light
+    data:
+      entity_id: light.catio_motion_light
+    service: light.turn_off
+  alias: Exterior motion lights off at dawn
+  condition: []
+  id: '1511665477412'
+  trigger:
+  - event: sunrise
+    platform: sun
+- action:
+  - alias: Turn on entryway lights
+    data:
+      entity_id: light.entryway_lights
+    service: light.turn_on
+  alias: Entryway lights on when front door opens
+  condition:
+  - after: sunset
+    condition: sun
+  - before: '22:00:00'
+    condition: time
+  id: '1511665737932'
+  trigger:
+  - entity_id: sensor.front_door_contact
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Turn on entryway lights
+    data:
+      entity_id: light.entryway_lights
+    service: light.turn_off
+  - delay: 00:05:00
+  alias: Entryway lights off 5 minutes after front door closes
+  condition:
+  - after: sunset
+    condition: sun
+  - before: '22:00:00'
+    condition: time
+  id: '1511666132155'
+  trigger:
+  - entity_id: sensor.front_door_contact
+    from: open
+    platform: state
+    to: closed

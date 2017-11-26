@@ -89,15 +89,9 @@
 
 #### Office Window ####
   - platform: mqtt
-    name: "Office Window acceleration"
-    state_topic: "smartthings/Window Office/acceleration/state"
-  - platform: mqtt
     name: "Office Window temperature"
     state_topic: "smartthings/Window Office/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Office Window threeAxis"
-    state_topic: "smartthings/Window Office/threeAxis/state"
   - platform: mqtt
     name: "Office Window contact"
     state_topic: "smartthings/Window Office/contact/state"
@@ -105,18 +99,18 @@
     name: "Office Window battery"
     state_topic: "smartthings/Window Office/battery/state"
     #unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Office Window acceleration"
+  #   state_topic: "smartthings/Window Office/acceleration/state"
+  # - platform: mqtt
+  #   name: "Office Window threeAxis"
+  #   state_topic: "smartthings/Window Office/threeAxis/state"
 
 #### Bathroom Window ####
-  - platform: mqtt
-    name: "Bathroom Window acceleration"
-    state_topic: "smartthings/Window Bathroom/acceleration/state"
   - platform: mqtt
     name: "Bathroom Window temperature"
     state_topic: "smartthings/Window Bathroom/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Bathroom Window threeAxis"
-    state_topic: "smartthings/Window Bathroom/threeAxis/state"
   - platform: mqtt
     name: "Bathroom Window contact"
     state_topic: "smartthings/Window Bathroom/contact/state"
@@ -124,18 +118,19 @@
     name: "Bathroom Window battery"
     state_topic: "smartthings/Window Bathroom/battery/state"
     unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Bathroom Window threeAxis"
+  #   state_topic: "smartthings/Window Bathroom/threeAxis/state"
+  # - platform: mqtt
+  #   name: "Bathroom Window acceleration"
+  #   state_topic: "smartthings/Window Bathroom/acceleration/state"
 
 #### Bedroom Window ####
-  - platform: mqtt
-    name: "Bedroom Window acceleration"
-    state_topic: "smartthings/Window Bedroom/acceleration/state"
+
   - platform: mqtt
     name: "Bedroom Window temperature"
     state_topic: "smartthings/Window Bedroom/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Bedroom Window threeAxis"
-    state_topic: "smartthings/Window Bedroom/threeAxis/state"
   - platform: mqtt
     name: "Bedroom Window contact"
     state_topic: "smartthings/Window Bedroom/contact/state"
@@ -143,6 +138,12 @@
     name: "Bedroom Window battery"
     state_topic: "smartthings/Window Bedroom/battery/state"
     unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Bedroom Window threeAxis"
+  #   state_topic: "smartthings/Window Bedroom/threeAxis/state"
+  # - platform: mqtt
+  #   name: "Bedroom Window acceleration"
+  #   state_topic: "smartthings/Window Bedroom/acceleration/state"
 
 #### FRONT LEFT WINDOW (Xiaomi Origional contact sensor using A4refill pad) ####
   - platform: mqtt
@@ -172,15 +173,9 @@
 
 #### Front Door ####
   - platform: mqtt
-    name: "Front Door acceleration"
-    state_topic: "smartthings/Door Frontdoor/acceleration/state"
-  - platform: mqtt
     name: "Front Door temperature"
     state_topic: "smartthings/Door Frontdoor/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Front Door threeAxis"
-    state_topic: "smartthings/Door Frontdoor/threeAxis/state"
   - platform: mqtt
     name: "Front Door contact"
     state_topic: "smartthings/Door Frontdoor/contact/state"
@@ -188,18 +183,18 @@
     name: "Front Door battery"
     state_topic: "smartthings/Door Frontdoor/battery/state"
     unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Front Door acceleration"
+  #   state_topic: "smartthings/Door Frontdoor/acceleration/state"
+  # - platform: mqtt
+  #   name: "Front Door threeAxis"
+  #   state_topic: "smartthings/Door Frontdoor/threeAxis/state"
 
 #### Backdoor Slider ####
-  - platform: mqtt
-    name: "Backdoor Slider acceleration"
-    state_topic: "smartthings/Door Deck Slider/acceleration/state"
   - platform: mqtt
     name: "Backdoor Slider temperature"
     state_topic: "smartthings/Door Deck Slider/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Backdoor Slider threeAxis"
-    state_topic: "smartthings/Door Deck Slider/threeAxis/state"
   - platform: mqtt
     name: "Backdoor Slider contact"
     state_topic: "smartthings/Door Deck Slider/contact/state"
@@ -207,18 +202,18 @@
     name: "Backdoor Slider battery"
     state_topic: "smartthings/Door Deck Slider/battery/state"
     unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Backdoor Slider acceleration"
+  #   state_topic: "smartthings/Door Deck Slider/acceleration/state"
+  # - platform: mqtt
+  #   name: "Backdoor Slider threeAxis"
+  #   state_topic: "smartthings/Door Deck Slider/threeAxis/state"
 
 #### Catio Door ####
-  - platform: mqtt
-    name: "Catio Door acceleration"
-    state_topic: "smartthings/Door Catio/acceleration/state"
   - platform: mqtt
     name: "Catio Door temperature"
     state_topic: "smartthings/Door Catio/temperature/state"
     unit_of_measurement: "°F"
-  - platform: mqtt
-    name: "Catio Door threeAxis"
-    state_topic: "smartthings/Door Catio/threeAxis/state"
   - platform: mqtt
     name: "Catio Door contact"
     state_topic: "smartthings/Door Catio/contact/state"
@@ -226,6 +221,12 @@
     name: "Catio Door battery"
     state_topic: "smartthings/Door Catio/battery/state"
     unit_of_measurement: "%"
+  # - platform: mqtt
+  #   name: "Catio Door threeAxis"
+  #   state_topic: "smartthings/Door Catio/threeAxis/state"
+  # - platform: mqtt
+  #   name: "Catio Door acceleration"
+  #   state_topic: "smartthings/Door Catio/acceleration/state"
 
 #### Mi Flora ####    
   - platform: miflora
@@ -240,43 +241,43 @@
       # - battery
 
 #### Fitbit ####
-  - platform: fitbit
-    clock_format: 12H
-    monitored_resources:
-      # - activities/activityCalories
-      - activities/calories
-      - activities/caloriesBMR
-      - activities/distance
-      # - activities/elevation
-      # - activities/floors
-      - activities/heart
-      - activities/minutesFairlyActive
-      - activities/minutesLightlyActive
-      - activities/minutesSedentary
-      - activities/minutesVeryActive
-      - activities/steps
-      # - activities/tracker/activityCalories
-      - activities/tracker/calories
-      - activities/tracker/distance
-      # - activities/tracker/elevation
-      # - activities/tracker/floors
-      - activities/tracker/minutesFairlyActive
-      - activities/tracker/minutesLightlyActive
-      - activities/tracker/minutesSedentary
-      - activities/tracker/minutesVeryActive
-      - activities/tracker/steps
-      - body/bmi
-      - body/fat
-      - body/weight
-      - devices/battery
-      - sleep/awakeningsCount
-      - sleep/efficiency
-      - sleep/minutesAfterWakeup
-      - sleep/minutesAsleep
-      - sleep/minutesAwake
-      - sleep/minutesToFallAsleep
-      - sleep/startTime
-      - sleep/timeInBed
+  # - platform: fitbit
+  #   clock_format: 12H
+  #   monitored_resources:
+  #     # - activities/activityCalories
+  #     - activities/calories
+  #     - activities/caloriesBMR
+  #     - activities/distance
+  #     # - activities/elevation
+  #     # - activities/floors
+  #     - activities/heart
+  #     - activities/minutesFairlyActive
+  #     - activities/minutesLightlyActive
+  #     - activities/minutesSedentary
+  #     - activities/minutesVeryActive
+  #     - activities/steps
+  #     # - activities/tracker/activityCalories
+  #     - activities/tracker/calories
+  #     - activities/tracker/distance
+  #     # - activities/tracker/elevation
+  #     # - activities/tracker/floors
+  #     - activities/tracker/minutesFairlyActive
+  #     - activities/tracker/minutesLightlyActive
+  #     - activities/tracker/minutesSedentary
+  #     - activities/tracker/minutesVeryActive
+  #     - activities/tracker/steps
+  #     - body/bmi
+  #     - body/fat
+  #     - body/weight
+  #     - devices/battery
+  #     - sleep/awakeningsCount
+  #     - sleep/efficiency
+  #     - sleep/minutesAfterWakeup
+  #     - sleep/minutesAsleep
+  #     - sleep/minutesAwake
+  #     - sleep/minutesToFallAsleep
+  #     - sleep/startTime
+  #     - sleep/timeInBed
 
 #### DOOR TEMPLATES ####
   - platform: template
