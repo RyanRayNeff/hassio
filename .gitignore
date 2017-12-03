@@ -18,3 +18,7 @@ known_devices.yaml
 
 # tts files
 tts
+
+# Skybell
+*.pickle
+skybell_cache.pickle
