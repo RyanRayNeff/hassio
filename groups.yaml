@@ -65,6 +65,7 @@ welcome_home:
   - light.dining_room_lights
   - light.kitchen_lights
   - light.living_room_lights
+  - switch.christmas_tree
 
 living_room:
   name: Living Room

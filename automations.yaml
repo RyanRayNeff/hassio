@@ -359,13 +359,26 @@
 - action:
   - alias: Bedside lamp on
     data:
-      entity: light.bed_lamp
+      brightness: 250
+      entity_id: light.bed_lamp
     service: light.turn_on
   alias: Bedside lamp on at 9pm
   condition: []
   id: '1511228516729'
   trigger:
   - at: '21:00:00'
+    platform: time
+- action:
+  - alias: Bedside lamp fade off at 930
+    data:
+      transition: 600
+      entity_id: light.bed_lamp
+    service: light.turn_off
+  alias: Bedside lamp off fully at 940 pm
+  condition: []
+  id: '1511666132156'
+  trigger:
+  - at: '21:30:00'
     platform: time
 - action:
   - alias: 'Text me '
@@ -472,10 +485,7 @@
       entity_id: light.catio_motion_light
     service: light.turn_off
   alias: String lights turn off motion lights
-  condition:
-  - after: sunset
-    before: sunrise
-    condition: sun
+  condition: []
   id: '1511664901076'
   trigger:
   - entity_id: light.string_lights
@@ -492,10 +502,7 @@
       entity_id: light.catio_motion_light
     service: light.turn_on
   alias: String lights turn on motion lights
-  condition:
-  - after: sunset
-    before: sunrise
-    condition: sun
+  condition: []
   id: '1511665012308'
   trigger:
   - entity_id: light.string_lights
@@ -553,11 +560,10 @@
     platform: state
     to: open
 - action:
-  - alias: Turn on entryway lights
+  - alias: Turn off entryway lights
     data:
       entity_id: light.entryway_lights
     service: light.turn_off
-  - delay: 00:05:00
   alias: Entryway lights off 5 minutes after front door closes
   condition:
   - after: sunset
@@ -570,3 +576,22 @@
     from: open
     platform: state
     to: closed
+    for:
+      minutes: 5
+- action:
+  - data:
+      entity_id: switch.garage_heater
+    service: switch.turn_off
+  - data:
+      message: Garage Heater turned off
+    service: notify.hassiopushbullet
+  alias: Garage Heater auto-off after 90 minutes
+  condition: []
+  id: '1509419473656'
+  trigger:
+  - entity_id: switch.garage_heater
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 90

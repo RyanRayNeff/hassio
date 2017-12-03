@@ -33,3 +33,12 @@
   payload_on: "ON"
   payload_off: "OFF"
   retain: true
+
+- platform: mqtt
+  name: "Christmas Tree"
+  command_topic: "cmnd/christmas_tree/power"
+  state_topic: "stat/christmas_tree/POWER"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true

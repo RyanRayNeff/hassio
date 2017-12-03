@@ -18,6 +18,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
 # Enables configuration UI
 config:
 
@@ -149,6 +150,17 @@ history_graph:
       - sensor.lemon_tree_temperature
     hours_to_show: 240
 
+skybell:
+  username: !secret skybell_username
+  password: !secret skybell_password
+camera:
+  - platform: skybell
+binary_sensor:
+  - platform: skybell
+    monitored_conditions:
+      - button
+      - motion
+      
 input_boolean:
   notify_home:
     name: Bool for Notify when the first person arrives home - used in Jason arrives automation

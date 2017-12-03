@@ -12,6 +12,9 @@ switch.living_room_lamp:
 switch.white_noise:
   icon: mdi:creation
   emulated_hue_hidden: false
+switch.christmas_tree:
+  icon: mdi:pine-tree
+  emulated_hue_hidden: false
 
 #### WEMO SWITCHES ####
 switch.lemon_lights:
