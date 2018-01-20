@@ -18,8 +18,47 @@ homeassistant:
 
 # Enables the frontend
 frontend:
-  javascript_version: latest
+
 # Enables configuration UI
+  themes:
+    happy:
+      primary-color: pink
+    sad:
+      primary-color: blue
+    darkred:
+      # Main colors that can be changed
+      dark-primary-color: "#c66900"
+      disabled-text-color: "#545454"
+      divider-color: "rgba(255, 255, 255, 0.12)"
+      light-primary-color: "#e06c6c"
+      paper-card-background-color: "#1d1d1d"
+      paper-grey-200: "#191919"
+      paper-item-icon-color: "#d3d3d3"
+      paper-listbox-background-color: "#202020"
+      primary-background-color: "#303030"
+      primary-color: "#d32f2f"
+      primary-text-color: "#cfcfcf"
+      secondary-background-color: "#131313"
+      sidebar-text_-_background: "#62717b" 
+      # Colors based on variables, see above
+      paper-card-header-color: "var(--paper-item-icon-color)" 
+      paper-item-icon-active-color: "var(--primary-color)"
+      paper-item-icon_-_color: "var(--primary-text-color)"
+      paper-listbox-color: "var(--primary-text-color)"
+      paper-grey-50: "var(--primary-text-color)"
+      paper-slider-active-color: "var(--primary-color)"
+      paper-slider-knob-color: "var(--primary-color)"
+      paper-slider-knob-start-color: "var(--primary-color)"
+      paper-slider-pin-color: "var(--primary-color)"
+      paper-slider-secondary-color: "var(--light-primary-color)"
+      paper-toggle-button-checked-ink-color: "var(--dark-primary-color)"
+      paper-toggle-button-checked-button-color: "var(--primary-color)"
+      paper-toggle-button-checked-bar-color: "var(--light-primary-color)"
+      paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
+      secondary-text-color: "var(--primary-color)"
+      table-row-background-color: "var(--paper-card-background-color)"
+      table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+
 config:
 
 http:
@@ -37,6 +76,9 @@ http:
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
+
+# 1-15-17 the /hassio tab stopped showing up. I had to add this to get it back
+hassio:
 
 # Discover some devices automatically
 discovery:
@@ -76,11 +118,11 @@ blink:
 # Enables the map componment
 map:
 
-device_tracker:
-  - platform: automatic
-    client_id: !secret device_tracker_automatic_client_id
-    secret: !secret device_tracker_automatic_secret
-    current_location: true 
+# device_tracker:
+#   - platform: automatic
+#     client_id: !secret device_tracker_automatic_client_id
+#     secret: !secret device_tracker_automatic_secret
+#     current_location: true 
 
 notify:
   - name: hassiopushbullet
@@ -160,7 +202,11 @@ binary_sensor:
     monitored_conditions:
       - button
       - motion
-      
+  - platform: octoprint
+    monitored_conditions:
+      - Printing
+      - Printing Error
+
 input_boolean:
   notify_home:
     name: Bool for Notify when the first person arrives home - used in Jason arrives automation
@@ -171,3 +217,11 @@ input_boolean:
   jasons_workout_bool:
     name: Jason is probably working out Boolean
     initial: off
+
+octoprint:
+  host: !secret octoprint_host
+  api_key: !secret octoprint_api
+  bed: true
+  number_of_tools: 1
+
+ 

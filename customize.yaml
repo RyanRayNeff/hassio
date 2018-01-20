@@ -84,6 +84,15 @@ sensor.office_window_temperature:
 # sensor.office_window_threeaxis:
 #   friendly_name: Office Window threeAxis
 
+#### Kitchen Window ####
+sensor.kitchen_window_battery:
+  icon: mdi:battery
+  friendly_name: Kitchen Window Battery
+sensor.kitchen_window_contact:
+  friendly_name: Kitchen Window Contact
+sensor.kitchen_window_temperature:
+  friendly_name: Kitchen Window Temperature
+
 #### Bathroom Window ####
 sensor.bathroom_window_battery:
   icon: mdi:battery

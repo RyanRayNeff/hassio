@@ -85,7 +85,6 @@
   id: '1508463096852'
   trigger:
   - event: sunset
-    offset: +01:00:00
     platform: sun
 - action:
   - alias: Sonoff white noise on
@@ -151,7 +150,7 @@
     platform: state
     to: inactive
     for:
-      minutes: 5
+      minutes: 1
 - action:
   - data:
       message: The backdoor slider is open.
@@ -595,3 +594,30 @@
     to: 'on'
     for:
       minutes: 90
+- action:
+  - data:
+      entity_id: switch.dryer_fan
+    service: switch.turn_off
+  alias: Turn Dryer fan off after 1 hour
+  condition: []
+  id: '1512962164879'
+  trigger:
+  - entity_id: switch.dryer_fan
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 60
+- action:
+  - alias: Google home kitchen announcement
+    data:
+      message: The dryer exhaust fan has powered on.
+    entity_id: media_player.kitchen_speaker
+    service: tts.google_say
+  alias: Dryer fan on notification
+  id: '1512962164880'
+  trigger:
+  - entity_id: switch.dryer_fan
+    from: 'off'
+    platform: state
+    to: 'on'

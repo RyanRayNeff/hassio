@@ -183,3 +183,14 @@
   retain: false
   optimistic: false
   qos: 2
+
+# Sengled E11-G13W Element Classic A19 Smart Home LED Bulb
+- platform: mqtt
+  name: "Attic Light"
+  state_topic: "smartthings/Attic Light/switch/state"
+  command_topic: "smartthings/Attic Light/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2

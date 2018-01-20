@@ -95,6 +95,8 @@ kitchen:
   name: kitchen
   entities:
   - light.kitchen_lights
+  - sensor.kitchen_window_temperature
+  - sensor.kitchen_window_contact_template
   - media_player.kitchen_speaker
 
 dining_room:
@@ -211,6 +213,7 @@ office:
 windows:
   name: All windows
   entities:
+  - sensor.kitchen_window_contact_template
   - sensor.office_window_contact_template
   - sensor.bedroom_window_contact_template
   - sensor.bathroom_window_contact_template
@@ -297,6 +300,7 @@ batteries:
   - sensor.xiaomi_motion__battery
   - sensor.lemon_tree_battery
   # windows
+  - sensor.kitchen_window_battery
   - sensor.office_window_battery
   - sensor.bedroom_window_battery
   - sensor.bathroom_window_battery
@@ -317,6 +321,49 @@ security_automations:
      - automation.notify_when_garage_door_closes
      - automation.something_has_opened_on_a_weeknight
      - automation.jasons_home
+#### AUTOMATIONS ####
+all_current_automations:
+  name: All Current Automations
+  entities:
+    - automation.arm_camera_when_garage_door_opens
+    - automation.bedside_lamp_off_fully_at_940_pm
+    - automation.bedside_lamp_on_at_9pm
+    - automation.dryer_fan_on_notification
+    - automation.entryway_lights_off_5_minutes_after_front_door_closes
+    - automation.entryway_lights_on_when_front_door_opens
+    - automation.exterior_motion_lights_off_at_dawn
+    - automation.exterior_motion_lights_on_at_dusk
+    - automation.foot_heater_auto_off_after_1_hour
+    - automation.garage_heater_autooff_after_90_minutes
+    - automation.jasons_home
+    - automation.laundry_room_lights_off_motion
+    - automation.laundry_room_lights_on
+    - automation.lemon_lights_off_at_dusk
+    - automation.lemon_lights_on_at_dawn
+    - automation.living_room_light_on_turns_off_tv_lights
+    - automation.living_room_lights_off_turns_on_tv_lights
+    - automation.notify_when_garage_door_closes
+    - automation.reset_all_input_booleans_daily
+    - automation.slider_door_reminder
+    - automation.something_has_opened_on_a_weeknight
+    - automation.string_lights_turn_off_motion_lights
+    - automation.string_lights_turn_on_motion_lights
+    - automation.turn_dryer_fan_off_after_1_hour
+    - automation.tv_lights_bedtime_mode
+    - automation.tv_lights_off_at_dawn
+    - automation.tv_lights_off_when_roku_on
+    - automation.tv_lights_on_at_dusk
+    - automation.tv_lights_on_when_roku_off
+    - automation.welcome_home_announcement
+    - automation.white_noise_machine_off
+    - automation.white_noise_machine_on
+
+archived_automations:
+  name: Archived Automations
+  entities:
+    - automation.lemon_water_emergency_notification
+    - automation.lemon_water_off_after_2_cups
+    - automation.lemon_water_on_monday_wednesday_and_friday
 
 #### VIEWS ####
 rooms_view:
@@ -355,6 +402,13 @@ home_stats:
   entities:
     - history_graph.lemon_stats
     - history_graph.temperature
+
+automations_view:
+  view: yes
+  name: Automations
+  entities:
+    - group.all_current_automations
+    - group.archived_automations
 
 # bio_stats:
 #   view: yes

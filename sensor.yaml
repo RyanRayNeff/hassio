@@ -87,6 +87,19 @@
     name: "Neff"
     state_topic: "smartthings/Neff/presence/state"
 
+#### Kitchen Window ####
+  - platform: mqtt
+    name: "Kitchen Window temperature"
+    state_topic: "smartthings/Window Kitchen/temperature/state"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: "Kitchen Window contact"
+    state_topic: "smartthings/Window Kitchen/contact/state"
+  - platform: mqtt
+    name: "Kitchen Window battery"
+    state_topic: "smartthings/Window Kitchen/battery/state"
+    unit_of_measurement: "%"
+
 #### Office Window ####
   - platform: mqtt
     name: "Office Window temperature"
@@ -399,3 +412,23 @@
           {% else %}
             mdi:alert-decagram
           {% endif %}
+  - platform: template
+    sensors:
+      kitchen_window_contact_template:
+        friendly_name: "Kitchen Window"
+        value_template: "{{ states('sensor.kitchen_window_contact') }}"
+        icon_template: >
+          {% if is_state('sensor.kitchen_window_contact', 'open') %}
+            mdi:window-open
+          {% elif is_state('sensor.kitchen_window_contact', 'closed') %}
+            mdi:window-closed
+          {% else %}
+            mdi:alert-decagram
+          {% endif %}
+
+  - platform: octoprint
+    name: OctoPrint
+    monitored_conditions:
+      - Current State
+      - Temperatures
+      - Job Percentage
