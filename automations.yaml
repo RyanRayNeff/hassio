@@ -678,3 +678,16 @@
   trigger:
   - at: 07:15:00
     platform: time
+
+- action:
+  - alias: Turn on attic lights
+    data:
+      entity_id: light.attic_light
+    service: light.turn_on
+  alias: Attic lights on as long as attic hatch is open
+  id: '1517446249132'
+  trigger:
+  - entity_id: sensor.attic_door_contact
+    from: closed
+    platform: state
+    to: open

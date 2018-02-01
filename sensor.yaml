@@ -245,6 +245,11 @@
   #   name: "Catio Door acceleration"
   #   state_topic: "smartthings/Door Catio/acceleration/state"
 
+#### Attic Door (Xiaomi Origional contact sensor using A4refill pad) ####
+  - platform: mqtt
+    name: "Attic Door contact"
+    state_topic: "smartthings/Attic Door Sensor/contact/state"
+
 #### Mi Flora ####    
   - platform: miflora
     name: Lemon Tree

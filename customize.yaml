@@ -161,6 +161,11 @@ sensor.backdoor_slider_temperature:
 # sensor.backdoor_slider_threeaxis:
 #   friendly_name: Backdoor Slider threeAxis
 
+#### Attic Door ####
+sensor.attic_door_contact:
+  friendly_name: Attic Door Contact
+  icon: mdi:door
+
 #### GROUPS HIDDEN FROM THE FRONT END ####
 # Used in the welcome home automation
 group.welcome_home:

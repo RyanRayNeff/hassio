@@ -325,6 +325,10 @@ security_automations:
 all_current_automations:
   name: All Current Automations
   entities:
+    - automation.attic_lights_on_when_attic_hatch_is_open
+    - automation.attic_lights_off_when_attic_hatch_closes
+    - automation.attic_light_prevent_turn_off_while_your_in_there
+    - automation.attic_light_daily_off_check
     - automation.mailbox_opened_twice_in_one_day
     - automation.mails_here
     - automation.arm_camera_when_garage_door_opens
@@ -388,6 +392,8 @@ security_view:
   view: yes
   name: Security
   entities:
+    - camera.front_door
+    - binary_sensor.skybell_front_door_motion
     - group.blink_camera
     - group.windows
     - group.doors
