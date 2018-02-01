@@ -413,6 +413,10 @@
     platform: state
     to: open
 - action:
+  - alias: Reset the bool mails here
+    data:
+      entity_id: input_boolean.mails_here_bool
+    service: input_boolean.turn_on
   - alias: Reset the bool for Notify me when Jason gets home
     data:
       entity_id: input_boolean.notify_home
@@ -621,3 +625,56 @@
     from: 'off'
     platform: state
     to: 'on'
+- action:
+  - alias: Mails here so text me
+    data:
+      message: The mails here
+    service: notify.hassiopushbullet
+  - alias: Turn off the bool, so this runs only once
+    data:
+      entity_id: input_boolean.mails_here_bool
+    service: input_boolean.turn_off
+  - data:
+      message: The mail has been delivered. Go and get it. Or not. I don't care.
+    service: tts.google_say
+  alias: Mails here
+  condition:
+  - condition: state
+    entity_id: input_boolean.mails_here_bool
+    state: 'on'
+  id: '1511228807881'
+  trigger:
+  - entity_id: sensor.mailbox
+    from: closed
+    platform: state
+    to: open
+- action:
+  - alias: Mail has been tampered with
+    data:
+      message: Somebody is fucking with your mailbox
+    service: notify.hassiopushbullet
+  alias: Mailbox opened twice in one day
+  condition:
+  - condition: state
+    entity_id: input_boolean.mails_here_bool
+    state: 'off'
+  id: '1511228807882'
+  trigger:
+  - entity_id: sensor.mailbox
+    from: closed
+    platform: state
+    to: open
+- action:
+  - data:
+      brightness: 250
+      entity_id: light.bed_lamp
+    service: light.turn_on
+  - data:
+      entity_id: light.bed_lamp
+    service: light.turn_off
+  alias: Bed lamp daily reset
+  condition: []
+  id: '1517446249121'
+  trigger:
+  - at: 07:15:00
+    platform: time

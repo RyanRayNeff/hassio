@@ -37,6 +37,10 @@
     state_topic: "smartthings/Xiaomi Zigbee Aqara Button AQ2/button/state"
      #cmd_topic: "smartthings/Xiaomi Zigbee Aqara Button AQ2/button/cmd"
 
+#### MAILBOX ####
+  - platform: mqtt
+    name: "Mailbox"
+    state_topic: "smartthings/Mailbox/contact/state"
 
 #### GARAGE TEMP MONITOR ####
   - platform: mqtt

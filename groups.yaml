@@ -325,8 +325,11 @@ security_automations:
 all_current_automations:
   name: All Current Automations
   entities:
+    - automation.mailbox_opened_twice_in_one_day
+    - automation.mails_here
     - automation.arm_camera_when_garage_door_opens
     - automation.bedside_lamp_off_fully_at_940_pm
+    - automation.bed_lamp_daily_reset
     - automation.bedside_lamp_on_at_9pm
     - automation.dryer_fan_on_notification
     - automation.entryway_lights_off_5_minutes_after_front_door_closes

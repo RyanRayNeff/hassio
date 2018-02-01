@@ -89,6 +89,9 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
+# The recorder component is storing details in a database which then are handled by the history component.
+recorder:
+  
 # View all events in a logbook
 logbook:
 
@@ -197,6 +200,10 @@ skybell:
   password: !secret skybell_password
 camera:
   - platform: skybell
+  # This is the camera connected to the octoprint
+  - platform: mjpeg
+    mjpeg_url: http://192.168.86.150/webcam/?action=stream
+    still_image_url: http://192.168.86.150/webcam/?action=snapshot
 binary_sensor:
   - platform: skybell
     monitored_conditions:
@@ -216,6 +223,9 @@ input_boolean:
     initial: off
   jasons_workout_bool:
     name: Jason is probably working out Boolean
+    initial: off
+  mails_here_bool:
+    name: Mail is here Boolean
     initial: off
 
 octoprint:
