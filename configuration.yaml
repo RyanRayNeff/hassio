@@ -209,29 +209,28 @@ binary_sensor:
     monitored_conditions:
       - button
       - motion
-  - platform: octoprint
-    monitored_conditions:
-      - Printing
-      - Printing Error
+  # - platform: octoprint
+  #   monitored_conditions:
+  #     - Printing
+  #     - Printing Error
 
 input_boolean:
-  notify_home:
-    name: Bool for Notify when the first person arrives home - used in Jason arrives automation
-    initial: off
   welcome_home_announcement:
     name: Welcome home Neff or Nichol Boolean
-    initial: off
-  jasons_workout_bool:
-    name: Jason is probably working out Boolean
     initial: off
   mails_here_bool:
     name: Mail is here Boolean
     initial: off
 
-octoprint:
-  host: !secret octoprint_host
-  api_key: !secret octoprint_api
-  bed: true
-  number_of_tools: 1
+# octoprint:
+#   host: !secret octoprint_host
+#   api_key: !secret octoprint_api
+#   bed: true
+#   number_of_tools: 1
 
  
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: https://hassio.local:3218

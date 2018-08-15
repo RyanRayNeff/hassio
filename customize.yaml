@@ -46,11 +46,11 @@ sensor.blink_garage_notifications:
   friendly_name: Blink Notifications
   icon: mdi:email-alert
 
-sensor.xiaomi_motion__battery:
-  friendly_name: Motion Detector Battery
+sensor.laundry_room_motion_battery:
+  friendly_name: Laundry Room Motion Battery
   icon: mdi:battery
-sensor.xiaomi_motion__motion:
-  friendly_name: Motion detector
+sensor.laundry_room_motion:
+  friendly_name: Laundry Room Motion
   icon: mdi:run-fast
 
 sensor.lemon_tree_battery:
@@ -169,6 +169,12 @@ sensor.attic_door_contact:
 #### GROUPS HIDDEN FROM THE FRONT END ####
 # Used in the welcome home automation
 group.welcome_home:
-  hidden: true
-group.bedtime_shutdown:
-  hidden: true
+  emulated_hue_hidden: false
+  #hidden: true
+#group.bedtime_shutdown:
+  #hidden: true
+
+#### GROUPS EXPOSED TO EMULATED HUE ####
+group.running_lights:
+  emulated_hue_hidden: false
+  # welcome_home is also exposed to emulated hue

@@ -1,20 +1,40 @@
 ####GROUPS####
+printer:
+  name: 3d printer
+  entities:
+    - sensor.nozzle_temp
+    - sensor.bed_temp
+    - sensor.printer_status
+    - sensor.percentage_done
+    - camera.mjpeg_camera
+
 pi_sensors:
   name: Pi Sensors
   entities:
     - sensor.cpu_used
-    - sensor.disk_used_home
+    - sensor.memory_free
+    - sensor.disk_use_percent_home
     - sensor.disk_free_
     - sensor.ram_available
     - sensor.ram_used
     - sensor.received_eth0
     - sensor.since_last_boot
+    - sensor.memory_use_percent
+    - sensor.network_in_eth0
+    - sensor.processor_use
+
+people_status:
+  name: People status
+  entities:
+    - sensor.nichol
+    - sensor.neff
+    
 temps:
   name: Temp readings
   entities:
     - sensor.blink_garage_temperature
     - sensor.front_door_temperature
-    - sensor.garage_temp__temperature
+    - sensor.guest_bath_temperature
     - sensor.lemon_tree_temperature
     - sensor.office_window_temperature
     - sensor.weather_temperature
@@ -22,6 +42,7 @@ temps:
     - sensor.backdoor_slider_temperature
     - sensor.bathroom_window_temperature
     - sensor.catio_door_temperature
+    - sensor.bathroom_temperature
 weather:
   name: Weather
   entities:
@@ -34,38 +55,6 @@ unused_wemos:
   entities:
     - switch.wemo_mini_3
     - switch.wemo_mini_4
-
-# This is hidden from the front end using customize.yaml
-bedtime_shutdown:
-  name: Bedtime
-  entities:
-  - light.living_room_lights
-  - switch.living_room_lamp
-  - light.entryway_lights
-  - remote.harmony_hub
-  - media_player.living_room_tv
-  - light.kitchen_lights
-  - light.dining_room_lights
-  - light.library_lights
-  - light.string_lights
-  - lights.hallway_lights
-  - light.garage_lights
-  - light.laundry_room_light_one
-  - light.laundry_room_light_2
-  - light.office_lights
-  - light.office_lamp
-  - switch.foot_heater 
-
-# This is hidden from the front end using customize.yaml
-welcome_home:
-  name: Welcome Home
-  entities:
-  - light.entryway_lights
-  - light.hallway_lights
-  - light.dining_room_lights
-  - light.kitchen_lights
-  - light.living_room_lights
-  - switch.christmas_tree
 
 living_room:
   name: Living Room
@@ -99,136 +88,251 @@ kitchen:
   - sensor.kitchen_window_contact_template
   - media_player.kitchen_speaker
 
+nichols_office:
+  name: Nichols Office
+  entities:
+  - light.nichols_office_light
+  - sensor.nichols_office_window_contact_template
+  - sensor.nichols_office_window_battery
+
+attic:
+  name: Attic
+  entities:
+  - light.attic_light
+  - sensor.attic_door_contact
+  - automation.attic_lights_on_when_attic_hatch_is_open
+  - automation.attic_lights_off_when_attic_hatch_closes
+  - automation.attic_light_prevent_turn_off_while_your_in_there
+  - automation.attic_light_daily_off_check
+
+guest_bath:
+  name: Guest Bathroom
+  entities:
+  - light.guest_bath_fan
+  - light.guest_bath_fan_light
+  - light.guest_bath_vanity
+  - sensor.guest_bath_humidity
+  - sensor.guest_bath_temperature
+  - automation.guest_bathroom_fan_turns_on_vanity
+  - automation.guest_bathroom_vanity_turns_on_fan_light
+  - automation.guest_bath_fan_kicks_on_above_61_humidity
+  - automation.guest_bathroom_fan_autooff_after_15_minutes_during_the_day
+  - automation.guest_bathroom_fan_off_after_45_min_in_the_morning
+
 dining_room:
   name: Dining Room
   entities:
-  - light.dining_room_lights
-  - sensor.backdoor_slider_temperature
-  - sensor.backdoor_slider_contact_template
-  - automation.slider_door_reminder
+    - light.dining_room_lights
+    - sensor.backdoor_slider_temperature
+    - sensor.backdoor_slider_contact_template
+    - automation.slider_door_reminder
 
 library:
   name: Library
   entities:
-  - light.library_lights
-  - sensor.catio_door_temperature
-  - sensor.catio_door_contact_template
+    - light.library_lights
+    - sensor.catio_door_temperature
+    - sensor.catio_door_contact_template
+
 outside:
   name: Outside
   entities:
-  - light.string_lights
-  - light.porch_lights
-  - light.catio_motion_light
-  - light.slider_motion_light
-  - automation.exterior_motion_lights_on_at_dusk
-  - automation.exterior_motion_lights_off_at_dawn
-  - automation.string_lights_turn_off_motion_lights
-  - automation.string_lights_turn_on_motion_lights
+    - sensor.mailbox_template
+    - light.string_lights
+    - light.porch_lights
+    - light.catio_motion_light
+    - light.slider_motion_light
+    - automation.exterior_motion_lights_on_at_dusk
+    - automation.exterior_motion_lights_off_at_dawn
+    - automation.string_lights_turn_off_motion_lights
+    - automation.string_lights_turn_on_motion_lights
+    - automation.mails_here
+    - automation.mailbox_opened_twice_in_one_day
+
+seasonal:
+  name: Seasonal
+  entities:
+    - automation.garden_soaker_on_in_the_morning
+    - automation.garden_soaker_off_after_30_minutes
+    - automation.front_yard_sprinkler_off_after_10_min
+    - automation.front_yard_sprinkler_off_after_10_min
+    - automation.front_yard_sprinkler_on_in_the_morning
 
 hallway:
   name: Hallway
   entities:
-  - lights.hallway_lights
+    - lights.hallway_lights
 
 bedroom:
   name: Bedroom
   entities:
-  - switch.white_noise
-  - light.hue_color_lamp_1
-  - light.hue_color_lamp_2
-  - light.hue_color_lamp_3
-  - light.bed_lamp
-  - sensor.bedroom_window_temperature
-  - sensor.bedroom_window_contact_template
-  - automation.bedside_lamp_on_at_9pm
-  - automation.white_noise_machine_on
-  - automation.white_noise_machine_off
+    - switch.white_noise
+    - light.hue_color_lamp_1
+    - light.hue_color_lamp_2
+    - light.hue_color_lamp_3
+    - light.bed_lamp
+    - sensor.bedroom_window_temperature
+    - sensor.bedroom_window_contact_template
+    - automation.bedside_lamp_on_at_9pm
+    - automation.white_noise_machine_on
+    - automation.white_noise_machine_off
 
 garage:
   name: Garage
   entities:
-  - light.garage_lights
-  - sensor.garage_door
-  - switch.garage_heater
-  - sensor.garage_temp__temperature
-  - sensor.garage_temp__humidity
-  - sensor.garage_temp__battery
-  - media_player.garage_speaker
-  - automation.arm_camera_when_garage_door_opens
-  - automation.notify_when_garage_door_closes
+    - light.garage_lights
+    - sensor.garage_door
+    - sensor.garage_motion_detector
+    - switch.garage_heater
+    - media_player.garage_speaker
+    - automation.arm_camera_when_garage_door_opens
+    - automation.notify_when_garage_door_closes
+    - automation.garage_lights_motion_off_after_30_min
+    - automation.garage_lights_motion_on
 
 blink_camera:
   name: Blink Camera
   entities:
+  - binary_sensor.blink_armed_status
+  - camera.garage
+  - binary_sensor.blink_garage_motion_enabled
   - sensor.blink_garage_temperature
   - sensor.blink_garage_battery
-  - binary_sensor.blink_armed_status
-  - sensor.blink_garage_notifications
-  - binary_sensor.blink_garage_motion_enabled
-  - camera.garage
+  - camera.backyard
+  - binary_sensor.blink_backyard_motion_enabled
+  - sensor.blink_backyard_battery
+  - sensor.blink_backyard_temperature
+  - automation.blink_cameras_arm_at_night
+  - automation.blink_disarm_in_the_morning
+  - automation.blink_disarms_when_home_during_the_day
+  - automation.blink_system_arms_when_neff_leaves_the_house
 
 lemon_tree:
   name: Lemon Tree
   entities:
-  - plant.lemon_tree
-  - switch.lemon_lights
-  - switch.sonoff3
-  - sensor.lemon_tree_moisture
-  - sensor.lemon_tree_battery
-  - sensor.lemon_tree_temperature
-  - sensor.lemon_tree_conductivity
-  - sensor.lemon_tree_light_intensity
-  - automation.lemon_lights_off_at_dusk
-  - automation.lemon_lights_on_at_dawn
-  - automation.lemon_water_emergency_notification
-  - automation.lemon_water_off_after_2_cups
-  - automation.lemon_water_on_monday_wednesday_and_friday
+    - plant.lemon_tree
+    - switch.lemon_lights
+    - switch.sonoff3
+    - sensor.lemon_tree_moisture
+    - sensor.lemon_tree_battery
+    - sensor.lemon_tree_temperature
+    - sensor.lemon_tree_conductivity
+    - sensor.lemon_tree_light_intensity
+    - automation.lemon_lights_off_at_dusk
+    - automation.lemon_lights_on_at_dawn
+    - automation.lemon_water_emergency_notification
+    - automation.lemon_water_off_after_2_cups
+    - automation.lemon_water_on_monday_wednesday_and_friday
+  
 master_bath:
   name: Master Bath
   entities:
-  - light.bathroom_fan_lights
-  - light.bathroom_vanity_lights
-  - sensor.bathroom_window_temperature
-  - sensor.bathroom_window_contact_template
+    - light.bathroom_fan
+    - light.bathroom_fan_lights
+    - light.bathroom_vanity_lights
+    - sensor.bathroom_humidity
+    - sensor.bathroom_temperature
+    - sensor.bathroom_window_temperature
+    - sensor.bathroom_window_contact_template
+    - automation.bathroom_fan_kicks_on_above_61_humidity
+    - automation.bathroom_fan_off_after_30_min
+    - automation.bathroom_fan_off_after_60_minutes
+  
 laundry_room:
   name: Laundry Room
   entities:
-  - light.laundry_room_light_one
-  - light.laundry_room_light_2
-  - sensor.xiaomi_motion__motion
-  - sensor.xiaomi_motion__battery
-  - automation.laundry_room_lights_on
-  - automation.laundry_room_lights_off_motion
+    - light.laundry_room_light_one
+    - light.laundry_room_light_2
+    - sensor.laundry_room_motion
+    - sensor.laundry_room_motion_battery
+    - automation.laundry_room_lights_on
+    - automation.laundry_room_lights_off_motion
+  
 office:
   name: office
   entities:
-  - light.office_lights
-  - light.office_lamp
-  - switch.foot_heater
-  - automation.foot_heater_auto_off_after_1_hour
-  - sensor.office_window_contact_template
-  - sensor.office_window_temperature
+    - light.office_lights
+    - light.office_lamp
+    - switch.foot_heater
+    - sensor.office_window_contact_template
+    - sensor.office_window_temperature
+    - sensor.office_motion
+    - sensor.office_smoke_detector
+    - automation.foot_heater_auto_off_after_1_hour
+    - automation.office_lamp_turns_on_when_office_light_turns_on
+    - automation.office_lights_off_without_motion
+    - automation.office_lights_on_with_motion
+
+#### LIGHT GROUPS USED IN AUTOMATIONS/ALEXA ####
+running_lights:
+  name: Running Lights
+  entities:
+    - light.hallway_lights
+    - light.kitchen_lights
+    - light.dining_room_lights
+
+# This is hidden from the front end using customize.yaml
+bedtime_shutdown:
+  name: Bedtime
+  entities:
+    - light.living_room_lights
+    - switch.living_room_lamp
+    - light.entryway_lights
+    - remote.harmony_hub
+    - media_player.living_room_tv
+    - light.kitchen_lights
+    - light.dining_room_lights
+    - light.library_lights
+    - light.string_lights
+    - lights.hallway_lights
+    - light.garage_lights
+    - light.laundry_room_light_one
+    - light.laundry_room_light_2
+    - light.office_lights
+    - light.office_lamp
+    - switch.foot_heater 
+
+# This is hidden from the front end using customize.yaml
+welcome_home:
+  name: Welcome Home
+  entities:
+    - light.entryway_lights
+    - light.hallway_lights
+    - light.dining_room_lights
+    - light.kitchen_lights
+    - light.living_room_lights
+    - light.bedroom
+    - light.bathroom_fan_lights
 
 #### WINDOWS ####
 windows:
   name: All windows
   entities:
-  - sensor.kitchen_window_contact_template
-  - sensor.office_window_contact_template
-  - sensor.bedroom_window_contact_template
-  - sensor.bathroom_window_contact_template
-  - sensor.front_left_window_contact_template
-  - sensor.front_right_window_contact_template
-
+    - sensor.kitchen_window_contact_template
+    - sensor.front_left_window_contact_template
+    - sensor.front_right_window_contact_template    
+    - sensor.bedroom_window_contact_template
+    - sensor.bathroom_window_contact_template
+    - sensor.office_window_contact_template
+    - sensor.nichols_office_window_contact_template
+    
 #### DOORS ####
 doors:
   name: All Doors
   entities:
-  # Instead of the raw data, we want the template instead to get the fun icons
-  - sensor.front_door_contact_template
-  - sensor.catio_door_contact_template
-  - sensor.backdoor_slider_contact_template
-  - sensor.garage_door_template
+    # Instead of the raw data, we want the template instead to get the fun icons
+    - sensor.front_door_contact_template
+    - sensor.catio_door_contact_template
+    - sensor.backdoor_slider_contact_template
+    - sensor.garage_door_template
+    
+#### SKYBELL ####
+skybell:
+  name: Skybell
+  entities:
+    - camera.front_door
+    - binary_sensor.skybell_front_door_motion
+    - binary_sensor.skybell_front_door_button
 
 #### Ryans Fitbit ####
 # ryans_fitbit:
@@ -294,62 +398,80 @@ doors:
 batteries:
   name: Batteries
   entities:
-  # oddballs
-  - sensor.blink_garage_battery
-  - sensor.garage_temp__battery
-  - sensor.xiaomi_motion__battery
-  - sensor.lemon_tree_battery
-  # windows
-  - sensor.kitchen_window_battery
-  - sensor.office_window_battery
-  - sensor.bedroom_window_battery
-  - sensor.bathroom_window_battery
-  - sensor.front_left_window_battery
-  - sensor.front_right_window_battery
-  # doors
-  - sensor.backdoor_slider_battery
-  - sensor.catio_door_battery
-  - sensor.front_door_battery
-  - sensor.xiaomi_mi_cube__battery
-  - sensor.xiaomi_zigbee_aqara_button_aq2__battery
-  - sensor.charge_2_battery
+    # oddballs
+    - sensor.blink_garage_battery
+    - sensor.guest_bath_sensor__battery
+    - sensor.laundry_room_motion_battery
+    - sensor.lemon_tree_battery
+    # windows
+    - sensor.kitchen_window_battery
+    - sensor.office_window_battery
+    - sensor.bedroom_window_battery
+    - sensor.bathroom_window_battery
+    - sensor.front_left_window_battery
+    - sensor.front_right_window_battery
+    # doors
+    - sensor.backdoor_slider_battery
+    - sensor.catio_door_battery
+    - sensor.front_door_battery
+    - sensor.xiaomi_mi_cube__battery
+    - sensor.xiaomi_zigbee_aqara_button_aq2__battery
+    - sensor.charge_2_battery
+    
 #### SECURITY AUTOMATIONS ####
 security_automations:
   name: Security Automations
   entities:
-     - automation.arm_camera_when_garage_door_opens
-     - automation.notify_when_garage_door_closes
-     - automation.something_has_opened_on_a_weeknight
-     - automation.jasons_home
+    - automation.arm_camera_when_garage_door_opens
+    - automation.notify_when_garage_door_closes
+    - automation.something_has_opened_on_a_weeknight
+    - automation.watchman
+    - automation.blink_cameras_arm_at_night
+    - automation.blink_disarm_in_the_morning
+    - automation.blink_disarms_when_home_during_the_day
+    - automation.blink_system_arms_when_neff_leaves_the_house
+     
 #### AUTOMATIONS ####
 all_current_automations:
   name: All Current Automations
   entities:
+    - automation.3d_printer_complete_text
+    - automation.3d_print_voice_and_light_notification
+    - automation.all_current_automations_switched_on_at_reboot
+    - automation.all_archived_automations_switched_off_at_reboot
     - automation.attic_lights_on_when_attic_hatch_is_open
     - automation.attic_lights_off_when_attic_hatch_closes
     - automation.attic_light_prevent_turn_off_while_your_in_there
     - automation.attic_light_daily_off_check
+    - automation.bathroom_fan_kicks_on_above_61_humidity
+    - automation.blink_cameras_arm_at_night
+    - automation.blink_disarm_in_the_morning
+    - automation.blink_disarms_when_home_during_the_day
+    - automation.blink_system_arms_when_neff_leaves_the_house
     - automation.mailbox_opened_twice_in_one_day
     - automation.mails_here
     - automation.arm_camera_when_garage_door_opens
-    - automation.bedside_lamp_off_fully_at_940_pm
-    - automation.bed_lamp_daily_reset
-    - automation.bedside_lamp_on_at_9pm
     - automation.dryer_fan_on_notification
     - automation.entryway_lights_off_5_minutes_after_front_door_closes
     - automation.entryway_lights_on_when_front_door_opens
     - automation.exterior_motion_lights_off_at_dawn
     - automation.exterior_motion_lights_on_at_dusk
+    - automation.front_yard_sprinkler_off_after_10_min
+    - automation.front_yard_sprinkler_on_in_the_afternoon
+    - automation.front_yard_sprinkler_on_in_the_morning
     - automation.foot_heater_auto_off_after_1_hour
-    - automation.garage_heater_autooff_after_90_minutes
-    - automation.jasons_home
+    - automation.garage_lights_motion_off_after_30_min
+    - automation.garage_lights_motion_on
+    - automation.guest_bathroom_fan_turns_on_vanity
+    - automation.guest_bathroom_vanity_turns_on_fan_light
     - automation.laundry_room_lights_off_motion
     - automation.laundry_room_lights_on
-    - automation.lemon_lights_off_at_dusk
-    - automation.lemon_lights_on_at_dawn
     - automation.living_room_light_on_turns_off_tv_lights
     - automation.living_room_lights_off_turns_on_tv_lights
     - automation.notify_when_garage_door_closes
+    - automation.office_lamp_turns_on_when_office_light_turns_on
+    - automation.office_lights_off_without_motion
+    - automation.office_lights_on_with_motion
     - automation.reset_all_input_booleans_daily
     - automation.slider_door_reminder
     - automation.something_has_opened_on_a_weeknight
@@ -361,16 +483,23 @@ all_current_automations:
     - automation.tv_lights_off_when_roku_on
     - automation.tv_lights_on_at_dusk
     - automation.tv_lights_on_when_roku_off
+    - automation.watchman
     - automation.welcome_home_announcement
     - automation.white_noise_machine_off
     - automation.white_noise_machine_on
 
-archived_automations:
-  name: Archived Automations
-  entities:
-    - automation.lemon_water_emergency_notification
-    - automation.lemon_water_off_after_2_cups
-    - automation.lemon_water_on_monday_wednesday_and_friday
+# archived_automations:
+#   name: Archived Automations
+#   entities:
+#     - automation.lemon_water_emergency_notification
+#     - automation.lemon_water_off_after_2_cups
+#     - automation.lemon_water_on_monday_wednesday_and_friday
+#     - automation.lemon_lights_off_at_dusk
+#     - automation.lemon_lights_on_at_dawn
+#     - automation.bedside_lamp_on_at_9pm
+#     - automation.bedside_lamp_off_fully_at_940_pm
+#     - automation.bed_lamp_daily_reset
+#     - automation.garage_heater_autooff_after_90_minutes
 
 #### VIEWS ####
 rooms_view:
@@ -381,24 +510,49 @@ rooms_view:
     - group.bedroom
     - group.laundry_room
     - group.master_bath
+    - group.guest_bath
     - group.garage
     - group.dining_room
     - group.kitchen
+    - group.nichols_office
     - group.living_room
     - group.outside
     - group.hallway
+    - group.attic
 
 security_view:
   view: yes
   name: Security
   entities:
-    - camera.front_door
-    - binary_sensor.skybell_front_door_motion
+    - camera.mjpeg_camera
     - group.blink_camera
+    - group.skybell
     - group.windows
     - group.doors
     - group.security_automations
 
+automations_view:
+  view: yes
+  name: Automations
+  entities:
+    - group.all_current_automations
+    - group.archived_automations
+    - group.seasonal
+
+lightgroups_view:
+  view: yes
+  name: Light Groups
+  entities:
+    - group.running_lights
+    - group.bedtime_shutdown
+    - group.welcome_home
+
+printer_view:
+  view: yes
+  name: 3d Printer
+  entities:
+    - group.printer
+ 
 batteries_view:
   view: yes
   name: Batteries
@@ -411,13 +565,6 @@ home_stats:
   entities:
     - history_graph.lemon_stats
     - history_graph.temperature
-
-automations_view:
-  view: yes
-  name: Automations
-  entities:
-    - group.all_current_automations
-    - group.archived_automations
 
 # bio_stats:
 #   view: yes

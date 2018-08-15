@@ -1,92 +1,4 @@
 - action:
-  - alias: Lemon Grow Lights On
-    data:
-      entity_id: switch.lemon_lights
-    service: switch.turn_on
-  alias: Lemon lights on at dawn
-  condition: []
-  id: '1508122874635'
-  trigger:
-  - event: sunrise
-    offset: -01:00:00
-    platform: sun
-- action:
-  - alias: Water pump on
-    data:
-      entity_id: switch.sonoff3
-    service: switch.turn_on
-  - alias: Notify me that the water is on
-    data:
-      message: The HA automation switched the lemon water on
-    service: notify.hassiopushbullet
-  alias: Lemon water On Monday, Wednesday, and Friday
-  condition:
-  - condition: time
-    weekday:
-    - mon
-    - wed
-    - fri
-  id: '1508123571832'
-  trigger:
-  - at: 07:15:00
-    platform: time
-- action:
-  - data:
-      entity_id: switch.sonoff3
-    service: switch.turn_off
-  - alias: Notify me
-    data:
-      message: Lemon water has been turned off
-    service: notify.hassiopushbullet
-  - alias: Google home kitchen announcement
-    data:
-      message: The hot frothy lemon pipe has dried up.
-    entity_id: media_player.kitchen_speaker
-    service: tts.google_say
-  alias: Lemon Water Off (After 2 cups)
-  condition: []
-  id: '1508123732995'
-  trigger:
-  - entity_id: switch.sonoff3
-    for:
-      minutes: 3
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - alias: Google home kitchen announcement
-    data:
-      message: Oh shit, did you mean to turn on the lemon water? You should probably
-        shut that off before your lemons get moist. Moist, moist moist moist.
-    entity_id: media_player.kitchen_speaker
-    service: tts.google_say
-  - alias: Push it to my phone
-    data:
-      message: Somebody turned on the lemon water outside the normal schedule.
-    service: notify.hassiopushbullet
-  alias: Lemon water emergency notification
-  condition:
-  - after: 07:20:00
-    before: 07:10:00
-    condition: time
-  id: '1508125985421'
-  trigger:
-  - entity_id: switch.sonoff3
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - alias: Lemon Grow Lights Off
-    data:
-      entity_id: switch.lemon_lights
-    service: switch.turn_off
-  alias: Lemon lights off at dusk
-  condition: []
-  id: '1508463096852'
-  trigger:
-  - event: sunset
-    platform: sun
-- action:
   - alias: Sonoff white noise on
     data:
       entity_id: switch.white_noise
@@ -133,7 +45,7 @@
   condition: []
   id: '1509932489240'
   trigger:
-  - entity_id: sensor.xiaomi_motion__motion
+  - entity_id: sensor.laundry_room_motion
     from: inactive
     platform: state
     to: active
@@ -145,22 +57,14 @@
   condition: []
   id: '1509935790761'
   trigger:
-  - entity_id: sensor.xiaomi_motion__motion
+  - entity_id: sensor.laundry_room_motion
     from: active
     platform: state
     to: inactive
     for:
       minutes: 1
-- action:
-  - data:
-      message: The backdoor slider is open.
-    service: tts.google_say
+- id: '1510433529370'
   alias: Slider door reminder
-  condition:
-  - below: 60
-    condition: numeric_state
-    entity_id: sensor.weather_temperature
-  id: '1510433529370'
   trigger:
   - entity_id: sensor.backdoor_slider_contact
     for:
@@ -168,6 +72,14 @@
     from: closed
     platform: state
     to: open
+  condition:
+  - below: '55'
+    condition: numeric_state
+    entity_id: sensor.weather_temperature
+  action:
+  - data:
+      message: The backdoor slider is open.
+    service: tts.google_say
 - action:
   - alias: Arm the blink system
     data:
@@ -199,15 +111,16 @@
     platform: state
     to: closed
 - action:
-  - alias: Notify me
-    data:
-      message: Something has opened
+  - data_template:
+      message: '{{ trigger.from_state.name }} has opened at {{now().hour}}:{{now().minute}}
+        {{now().weekday()}} {{now().day}}-{{now().month}}-{{now().year}}'
+      title: Hassio night doorman says
     service: notify.hassiopushbullet
   alias: Something has opened on a weeknight
   condition:
   - condition: time
     after: '22:00:00'
-    before: 05:00:00
+    before: 06:00:00
   - condition: time
     weekday:
     - sun
@@ -217,7 +130,19 @@
     - thu
   id: '1510963733847'
   trigger:
+  - entity_id: sensor.front_door_contact
+    from: closed
+    platform: state
+    to: open
   - entity_id: sensor.backdoor_slider_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.catio_door_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.garage_door
     from: closed
     platform: state
     to: open
@@ -229,14 +154,6 @@
     from: closed
     platform: state
     to: open
-  - entity_id: sensor.catio_door_contact
-    from: closed
-    platform: state
-    to: open
-  - entity_id: sensor.front_door_contact
-    from: closed
-    platform: state
-    to: open
   - entity_id: sensor.front_left_window_contact
     from: closed
     platform: state
@@ -245,11 +162,15 @@
     from: closed
     platform: state
     to: open
-  - entity_id: sensor.garage_door
+  - entity_id: sensor.office_window_contact
     from: closed
     platform: state
     to: open
-  - entity_id: sensor.office_window_contact
+  - entity_id: sensor.nichols_office_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.kitchen_window_contact
     from: closed
     platform: state
     to: open
@@ -356,78 +277,13 @@
     platform: state
     to: playing
 - action:
-  - alias: Bedside lamp on
-    data:
-      brightness: 250
-      entity_id: light.bed_lamp
-    service: light.turn_on
-  alias: Bedside lamp on at 9pm
-  condition: []
-  id: '1511228516729'
-  trigger:
-  - at: '21:00:00'
-    platform: time
-- action:
-  - alias: Bedside lamp fade off at 930
-    data:
-      transition: 600
-      entity_id: light.bed_lamp
-    service: light.turn_off
-  alias: Bedside lamp off fully at 940 pm
-  condition: []
-  id: '1511666132156'
-  trigger:
-  - at: '21:30:00'
-    platform: time
-- action:
-  - alias: 'Text me '
-    data:
-      message: Jasons home
-    service: notify.hassiopushbullet
-  - alias: Turn off the bool, so this runs only once
-    data:
-      entity_id: input_boolean.notify_home
-    service: input_boolean.turn_off
-  alias: Jason's home
-  condition:
-  - condition: state
-    entity_id: sensor.nichol
-    state: not present
-  - condition: state
-    entity_id: sensor.neff
-    state: not present
-  - condition: time
-    weekday:
-    - sun
-    - mon
-    - tue
-    - wed
-    - thu
-  - condition: state
-    entity_id: input_boolean.notify_home
-    state: 'on'
-  id: '1511228807687'
-  trigger:
-  - entity_id: sensor.front_door_contact
-    from: closed
-    platform: state
-    to: open
-- action:
   - alias: Reset the bool mails here
     data:
       entity_id: input_boolean.mails_here_bool
     service: input_boolean.turn_on
-  - alias: Reset the bool for Notify me when Jason gets home
-    data:
-      entity_id: input_boolean.notify_home
-    service: input_boolean.turn_on
   - alias: Reset the bool for Welcome home announcement
     data:
       entity_id: input_boolean.welcome_home_announcement
-    service: input_boolean.turn_on
-  - alias: Reset the bool for Jason's workout automation
-    data:
-      entity_id: input_boolean.jasons_workout
     service: input_boolean.turn_on
   alias: Reset all input booleans daily
   condition: []
@@ -545,59 +401,38 @@
   trigger:
   - event: sunrise
     platform: sun
-- action:
-  - alias: Turn on entryway lights
-    data:
-      entity_id: light.entryway_lights
-    service: light.turn_on
+- id: '1511665737932'
   alias: Entryway lights on when front door opens
-  condition:
-  - after: sunset
-    condition: sun
-  - before: '22:00:00'
-    condition: time
-  id: '1511665737932'
   trigger:
   - entity_id: sensor.front_door_contact
     from: closed
     platform: state
     to: open
-- action:
+  condition:
+  - before: '22:00:00'
+    condition: time
+  action:
+  - alias: Turn on entryway lights
+    data:
+      entity_id: light.entryway_lights
+    service: light.turn_on
+- id: '1511666132155'
+  alias: Entryway lights off 5 minutes after front door closes
+  trigger:
+  - entity_id: sensor.front_door_contact
+    for:
+      minutes: 5
+    from: open
+    platform: state
+    to: closed
+  condition:
+  - before: '22:00:00'
+    condition: time
+  action:
   - alias: Turn off entryway lights
     data:
       entity_id: light.entryway_lights
     service: light.turn_off
-  alias: Entryway lights off 5 minutes after front door closes
-  condition:
-  - after: sunset
-    condition: sun
-  - before: '22:00:00'
-    condition: time
-  id: '1511666132155'
-  trigger:
-  - entity_id: sensor.front_door_contact
-    from: open
-    platform: state
-    to: closed
-    for:
-      minutes: 5
-- action:
-  - data:
-      entity_id: switch.garage_heater
-    service: switch.turn_off
-  - data:
-      message: Garage Heater turned off
-    service: notify.hassiopushbullet
-  alias: Garage Heater auto-off after 90 minutes
-  condition: []
-  id: '1509419473656'
-  trigger:
-  - entity_id: switch.garage_heater
-    from: 'off'
-    platform: state
-    to: 'on'
-    for:
-      minutes: 90
 - action:
   - data:
       entity_id: switch.dryer_fan
@@ -665,29 +500,540 @@
     platform: state
     to: open
 - action:
-  - data:
-      brightness: 250
-      entity_id: light.bed_lamp
-    service: light.turn_on
-  - data:
-      entity_id: light.bed_lamp
-    service: light.turn_off
-  alias: Bed lamp daily reset
-  condition: []
-  id: '1517446249121'
-  trigger:
-  - at: 07:15:00
-    platform: time
-
-- action:
   - alias: Turn on attic lights
     data:
       entity_id: light.attic_light
     service: light.turn_on
-  alias: Attic lights on as long as attic hatch is open
+  - data:
+      message: Attic light turned on
+    service: notify.hassiopushbullet
+  alias: Attic lights on when attic hatch is open
+  initial_state: 'on'
   id: '1517446249132'
   trigger:
   - entity_id: sensor.attic_door_contact
     from: closed
     platform: state
     to: open
+- action:
+  - data:
+      entity_id: light.attic_light
+    service: light.turn_off
+  - data:
+      message: Attic light turned off
+    service: notify.hassiopushbullet
+  alias: Attic lights off when attic hatch closes
+  initial_state: 'on'
+  condition: []
+  id: '1517451612225'
+  trigger:
+  - entity_id: sensor.attic_door_contact
+    from: open
+    platform: state
+    to: closed
+- action:
+  - data:
+      message: The attic light is on. Figure out what went wrong.
+    service: notify.hassiopushbullet
+  alias: Attic light daily off check
+  condition:
+  - condition: state
+    entity_id: light.attic_light
+    state: 'on'
+  id: '1517452247504'
+  trigger:
+  - at: 03:00:00
+    platform: time
+- action:
+  - data:
+      entity_id: light.attic_light
+    service: light.turn_on
+  alias: Attic light prevent turn off while your in there.
+  condition:
+  - condition: state
+    entity_id: sensor.attic_door_contact
+    state: open
+  id: '1517452557756'
+  trigger:
+  - entity_id: light.attic_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: group.all_current_automations
+    service: homeassistant.turn_on
+  alias: All Current Automations switched on at reboot
+  initial_state: 'on'
+  condition: []
+  id: '1518331844183'
+  trigger:
+  - event: start
+    platform: homeassistant
+- action:
+  - data:
+      message: Your 3d print is finished.
+    service: notify.hassiopushbullet
+  alias: 3d printer complete text
+  condition: []
+  id: '1522761641346'
+  trigger:
+  - entity_id: sensor.printer_status
+    from: Printing
+    platform: state
+    to: Operational
+- action:
+  - data:
+      message: Your 3D print has completed
+    service: tts.google_say
+  alias: 3d print voice and light notification
+  condition:
+  - after: 00:17:00:00
+    before: 00:21:00:00
+    condition: time
+  - condition: state
+    entity_id: sensor.neff
+    state: present
+  id: '1522762419478'
+  trigger:
+  - entity_id: sensor.printer_status
+    from: Printing
+    platform: state
+    to: Operational
+- action:
+  - data:
+      entity_id: light.office_lamp
+    service: light.turn_on
+  alias: Office Lamp turns on when office light turns on
+  condition:
+  - condition: state
+    entity_id: sensor.neff
+    state: present
+  - after: sunset
+    after_offset: '-1'
+    condition: sun
+  id: '1524542445364'
+  trigger:
+  - entity_id: light.office_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.garage_lights
+    service: light.turn_on
+  alias: Garage Lights motion ON
+  condition: []
+  id: '1524789941020'
+  trigger:
+  - entity_id: sensor.garage_motion_detector
+    from: inactive
+    platform: state
+    to: active
+- action:
+  - data:
+      entity_id: light.garage_lights
+    service: light.turn_off
+  alias: Garage Lights motion OFF after 30 min
+  condition:
+  - condition: state
+    entity_id: sensor.attic_door_contact
+    state: closed
+  id: '1524790115941'
+  trigger:
+  - entity_id: sensor.garage_motion_detector
+    from: active
+    platform: state
+    to: inactive
+    for:
+      minutes: 15
+- id: '1525483401142'
+  alias: Office lights on with motion
+  trigger:
+  - entity_id: sensor.office_motion
+    from: inactive
+    platform: state
+    to: active
+  condition:
+  - condition: state
+    entity_id: sensor.neff
+    state: present
+  action:
+  - data:
+      entity_id: light.office_lights
+    service: light.turn_on
+  - data:
+      entity_id: light.office_lamp
+    service: light.turn_on
+- id: '1525483555779'
+  alias: Office lights off without motion
+  trigger:
+  - entity_id: sensor.office_motion
+    from: active
+    platform: state
+    to: inactive
+    for:
+      minutes: 15
+  condition: []
+  action:
+  - data:
+      entity_id: light.office_lights
+    service: light.turn_off
+  - data:
+      entity_id: light.office_lamp
+    service: light.turn_off
+- id: '1531885446383'
+  alias: Front Yard sprinkler on in the morning
+  trigger:
+  - event: sunrise
+    offset: +00:31:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.front_yard_sprinkler
+    service: switch.turn_on
+- id: '1531886862294'
+  alias: Front yard sprinkler off after 10 min.
+  trigger:
+  - entity_id: switch.front_yard_sprinkler
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 10
+  condition: []
+  action:
+  - data:
+      entity_id: switch.front_yard_sprinkler
+    service: switch.turn_off
+- id: '1531889074560'
+  alias: Front yard sprinkler on in the afternoon
+  trigger:
+  - at: '17:20:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.front_yard_sprinkler
+    service: switch.turn_on
+- id: '1532050145392'
+  alias: Guest bathroom fan turns on vanity
+  trigger:
+  - entity_id: light.guest_bath_fan_light
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.guest_bath_vanity
+    state: 'off'
+  action:
+  - data:
+      entity_id: light.guest_bath_vanity
+    service: light.turn_on
+- id: '1532050297126'
+  alias: Guest bathroom vanity turns on fan light
+  trigger:
+  - entity_id: light.guest_bath_vanity
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.guest_bath_fan_light
+    state: 'off'
+  action:
+  - data:
+      entity_id: light.guest_bath_fan_light
+    service: light.turn_on
+- id: '1532838423231'
+  alias: Guest Bathroom fan off after 30 min in the morning.
+  trigger:
+  - entity_id: light.guest_bath_fan
+    for:
+      minutes: 30
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - below: '60'
+    condition: numeric_state
+    entity_id: sensor.guest_bath_humidity
+  action:
+  - data:
+      entity_id: light.guest_bath_fan
+    service: light.turn_off
+- id: '1532838726669'
+  alias: Guest Bathroom fan auto-off after 15 minutes during the day
+  trigger:
+  - entity_id: light.guest_bath_fan
+    for:
+      minutes: 15
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - below: '60'
+    condition: numeric_state
+    entity_id: sensor.guest_bath_humidity
+  action:
+  - data:
+      entity_id: light.guest_bath_fan
+    service: light.turn_off
+- id: '1532840322162'
+  alias: Blink system arms when Neff leaves the house
+  trigger:
+  - entity_id: sensor.neff
+    from: present
+    platform: state
+    to: away
+  condition:
+  - condition: state
+    entity_id: binary_sensor.blink_armed_status
+    state: disarmed
+  action:
+  - data:
+      friendly_name: Backyard
+    service: blink.snap_picture
+  - data:
+      friendly_name: Garage
+    service: blink.snap_picture
+  - delay: 00:01:00
+  - data:
+      device_armed: 'True'
+    service: blink.arm_system
+- id: '1532906715516'
+  alias: Guest bath fan kicks on above 61% humidity
+  trigger:
+  - above: '61'
+    entity_id: sensor.guest_bath_humidity
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: light.guest_bath_fan
+    state: 'off'
+  action:
+  - data:
+      entity_id: light.guest_bath_fan
+    service: light.turn_on
+- id: '1532925651375'
+  alias: Blink disarms when home during the day
+  trigger:
+  - entity_id: sensor.neff
+    from: away
+    platform: state
+    to: present
+  condition: []
+  action:
+  - data:
+      friendly_name: Garage
+    service: blink.snap_picture
+  - data:
+      friendly_name: Backyard
+    service: blink.snap_picture
+  - delay: 00:01:00
+  - data:
+      device_armed: 'False'
+    service: blink.arm_system
+- id: '1533178648422'
+  alias: Garden Soaker off after 30 minutes
+  trigger:
+  - entity_id: switch.garden_soaker
+    for:
+      minutes: 30
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.garden_soaker
+    service: switch.turn_off
+- id: '1533178834433'
+  alias: Garden Soaker on in the morning
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.garden_soaker
+    service: switch.turn_on
+- id: '1533271207703'
+  alias: Watchman
+  trigger:
+  - entity_id: sensor.front_door_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.backdoor_slider_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.catio_door_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.garage_door
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.bathroom_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.bedroom_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.front_left_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.front_right_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.office_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.nichols_office_window_contact
+    from: closed
+    platform: state
+    to: open
+  - entity_id: sensor.kitchen_window_contact
+    from: closed
+    platform: state
+    to: open
+  condition:
+  - condition: state
+    entity_id: sensor.nichol
+    state: away
+  - condition: state
+    entity_id: sensor.neff
+    state: away
+  action:
+  - data_template:
+      message: '{{ trigger.from_state.name }} has opened at {{now().hour}}:{{now().minute}}
+        {{now().weekday()}} {{now().day}}-{{now().month}}-{{now().year}}'
+      title: Hassio Daytime Watchman
+    service: notify.hassiopushbullet
+- id: '1533339985467'
+  alias: Bathroom fan off after 60 minutes
+  trigger:
+  - entity_id: light.bathroom_fan
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 60
+  condition:
+  - below: '60'
+    condition: numeric_state
+    entity_id: sensor.bathroom_humidity
+  action:
+  - data:
+      entity_id: light.bathroom_fan
+    service: light.turn_off
+- id: '1533497322705'
+  alias: Blink cameras arm at night
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      friendly_name: Garage
+    service: blink.snap_picture
+  - data:
+      friendly_name: Backyard
+    service: blink.snap_picture
+  - delay: 00:01:00
+  - data:
+      device_armed: 'True'
+    service: blink.arm_system
+- id: '1533497393896'
+  alias: Blink Disarm in the morning
+  trigger:
+  - at: 07:00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      friendly_name: Garage
+    service: blink.snap_picture
+  - data:
+      device_armed: 'False'
+    service: blink.arm_system
+  - delay: 00:01:00
+  - data:
+      device_armed: 'False'
+    service: blink.arm_system
+- id: '1533869254687'
+  alias: Guest bathroom motion turns on lights
+  trigger:
+  - entity_id: sensor.guest_bathroom_motion
+    from: inactive
+    platform: state
+    to: active
+  condition:
+  - after: 06:00:00
+    before: '22:00:00'
+    condition: time
+  action:
+  - data:
+      entity_id: light.guest_bath_fan_light
+    service: light.turn_on
+  - data:
+      entity_id: light.guest_bath_vanity
+    service: light.turn_on
+- id: '1533869493348'
+  alias: Guest Bathroom inactivity turns off lights
+  trigger:
+  - entity_id: sensor.guest_bathroom_motion
+    from: active
+    platform: state
+    to: inactive
+    for:
+      minutes: 5
+  condition: []
+  action:
+  - data:
+      entity_id: light.guest_bath_vanity
+    service: light.turn_off
+  - data:
+      entity_id: light.guest_bath_fan_light
+    service: light.turn_off
+- id: '1534009781657'
+  alias: Bathroom fan kicks on above 61% humidity
+  trigger:
+  - above: '61'
+    entity_id: sensor.bathroom_humidity
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: light.bathroom_fan
+    state: 'off'
+  action:
+  - data:
+      entity_id: light.bathroom_fan
+    service: light.turn_on
+- id: '1534009906218'
+  alias: Bathroom fan off after 30 min
+  trigger:
+  - entity_id: light.bathroom_fan
+    from: 'off'
+    platform: state
+    to: 'on'
+    for:
+      minutes: 30
+  condition:
+  - below: '60'
+    condition: numeric_state
+    entity_id: sensor.bathroom_humidity
+  action:
+  - data:
+      entity_id: light.bathroom_fan
+    service: light.turn_off

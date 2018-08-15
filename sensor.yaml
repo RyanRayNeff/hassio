@@ -42,18 +42,51 @@
     name: "Mailbox"
     state_topic: "smartthings/Mailbox/contact/state"
 
-#### GARAGE TEMP MONITOR ####
+#### GUEST BATHROOM SENSOR (Formerly Garage Temp) ####
   - platform: mqtt
-    name: "Garage Temp - temperature"
-    state_topic: "smartthings/Garage Temp/temperature/state"
+    name: "Guest Bath temperature"
+    state_topic: "smartthings/Guest Bath Sensor/temperature/state"
     unit_of_measurement: "°F"
   - platform: mqtt
-    name: "Garage Temp - humidity"
-    state_topic: "smartthings/Garage Temp/humidity/state"
+    name: "Guest Bath humidity"
+    state_topic: "smartthings/Guest Bath Sensor/humidity/state"
   - platform: mqtt
-    name: "Garage Temp - battery"
-    state_topic: "smartthings/Garage Temp/battery/state"
+    name: "Guest Bath Sensor - battery"
+    state_topic: "smartthings/Guest Bath Sensor/battery/state"
     unit_of_measurement: "%"
+
+#### BATHROOM SENSOR (Master bathroom) ####
+  - platform: mqtt
+    name: "Bathroom temperature"
+    state_topic: "smartthings/Bathroom Sensor/temperature/state"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: "Bathroom humidity"
+    state_topic: "smartthings/Bathroom Sensor/humidity/state"
+  - platform: mqtt
+    name: "Bathroom battery"
+    state_topic: "smartthings/Bathroom Sensor/battery/state"
+    unit_of_measurement: "%"
+
+#### GARAGE MOTION DETECTOR ####
+  - platform: mqtt
+    name: "Garage Motion Detector"
+    state_topic: "smartthings/Garage Motion Detector/motion/state"
+    
+#### GARAGE MOTION DETECTOR ####
+  - platform: mqtt
+    name: "Guest Bathroom Motion"
+    state_topic: "smartthings/Guest Bathroom Motion/motion/state"
+
+#### OFFICE MOTION DETECTOR ####
+  - platform: mqtt
+    name: "Office Motion"
+    state_topic: "smartthings/Office Motion/motion/state"
+
+#### OFFICE SMOKE CO DETECTOR ####
+  - platform: mqtt
+    name: "Office Smoke Detector"
+    state_topic: "smartthings/Smoke CO Office/smoke/state"
 
 #### COMPANION CUBE ####
   - platform: mqtt
@@ -68,14 +101,14 @@
 
 #### LAUNDRY ROOM MOTION DETECTOR ####
   - platform: mqtt
-    name: "Xiaomi Motion - motion"
-    state_topic: "smartthings/Xiaomi Motion/motion/state"
-     #cmd_topic: "smartthings/Xiaomi Motion/motion/cmd"
+    name: "Laundry Room Motion"
+    state_topic: "smartthings/Laundry Room Motion/motion/state"
+     #cmd_topic: "smartthings/Laundry Room Motion/motion/cmd"
   - platform: mqtt
-    name: "Xiaomi Motion - battery"
-    state_topic: "smartthings/Xiaomi Motion/battery/state"
+    name: "Laundry Room Motion battery"
+    state_topic: "smartthings/Laundry Room Motion/battery/state"
     unit_of_measurement: "%"
-     #cmd_topic: "smartthings/Xiaomi Motion/battery/cmd"
+     #cmd_topic: "smartthings/Laundry Room Motion/battery/cmd"
 
   - platform: mqtt
     name: "Xiaomi Zigbee Aqara Button AQ2 - battery"
@@ -183,6 +216,15 @@
     state_topic: "smartthings/Window Front Right/battery/state"
     unit_of_measurement: "%"
 
+#### NICHOLS OFFICE WINDOW ####
+  - platform: mqtt
+    name: "Nichols Office Window contact"
+    state_topic: "smartthings/Window Nichols Office/contact/state"
+  - platform: mqtt
+    name: "Nichols Office Window battery"
+    state_topic: "smartthings/Window Nichols Office/battery/state"
+    unit_of_measurement: "%"
+    
 #### Garage Door ####
   - platform: mqtt
     name: "Garage Door"
@@ -434,10 +476,61 @@
           {% else %}
             mdi:alert-decagram
           {% endif %}
+  - platform: template
+    sensors:
+      nichols_office_window_contact_template:
+        friendly_name: "Nichols Office Window"
+        value_template: "{{ states('sensor.nichols_office_window_contact') }}"
+        icon_template: >
+          {% if is_state('sensor.nichols_office_window_contact', 'open') %}
+            mdi:window-open
+          {% elif is_state('sensor.nichols_office_window_contact', 'closed') %}
+            mdi:window-closed
+          {% else %}
+            mdi:alert-decagram
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      mailbox_template:
+        friendly_name: "Mailbox"
+        value_template: "{{ states('sensor.mailbox') }}"
+        icon_template: >
+          {% if is_state('sensor.mailbox', 'open') %}
+            mdi:email-alert
+          {% elif is_state('sensor.mailbox', 'closed') %}
+            mdi:email
+          {% else %}
+            mdi:alert-decagram
+          {% endif %}
 
-  - platform: octoprint
-    name: OctoPrint
-    monitored_conditions:
-      - Current State
-      - Temperatures
-      - Job Percentage
+  # - platform: octoprint
+  #   name: OctoPrint
+  #   monitored_conditions:
+  #     - Current State
+  #     - Temperatures
+  #     - Job Percentage
+
+  #### OctoPrint MQTT Sensors ####
+  - platform: mqtt
+    state_topic: 'octoprint/event/PrinterStateChanged'
+    name: 'Printer Status'
+    value_template: '{{ value_json.state_string }}'
+ 
+  - platform: mqtt
+    state_topic: "octoprint/temperature/bed"
+    unit_of_measurement: "°C"
+    name: "Bed Temp"
+    value_template: '{{ value_json.actual }}'
+
+  - platform: mqtt
+    state_topic: "octoprint/temperature/tool0"
+    unit_of_measurement: "°C"
+    name: "Nozzle Temp"
+    value_template: '{{ value_json.actual }}'
+
+  - platform: mqtt
+    state_topic: "octoprint/progress/printing"
+    unit_of_measurement: "%"
+    name: "Percentage Done"
+    value_template: '{{ value_json.progress }}'

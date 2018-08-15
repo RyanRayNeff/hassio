@@ -1,1 +1,8 @@
-{"1": "switch.white_noise", "2": "switch.foot_heater", "3": "switch.living_room_lamp", "4": "switch.christmas_tree"}
+{
+    "1": "switch.white_noise",
+    "2": "switch.foot_heater",
+    "3": "switch.living_room_lamp",
+    "4": "switch.christmas_tree",
+    "5": "group.running_lights",
+    "6": "group.welcome_home"
+}

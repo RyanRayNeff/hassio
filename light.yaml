@@ -43,6 +43,17 @@
 
 # GE Z-wave Wireless In-Wall paddle switch 12722
 - platform: mqtt
+  name: "Bathroom Fan"
+  state_topic: "smartthings/Bathroom Fan/switch/state"
+  command_topic: "smartthings/Bathroom Fan/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+# GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
   name: "Bathroom Vanity Lights"
   state_topic: "smartthings/Bathroom Vanity Lights/switch/state"
   command_topic: "smartthings/Bathroom Vanity Lights/switch/cmd"
@@ -191,6 +202,54 @@
   command_topic: "smartthings/Attic Light/switch/cmd"
   payload_on: "on"
   payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+  
+  # GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Guest Bath Fan Light"
+  state_topic: "smartthings/Guest Bath Fan Light/switch/state"
+  command_topic: "smartthings/Guest Bath Fan Light/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+
+  # GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Guest Bath Vanity"
+  state_topic: "smartthings/Guest Bath Vanity/switch/state"
+  command_topic: "smartthings/Guest Bath Vanity/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+  
+  # GE Z-wave Wireless In-Wall paddle switch 12722
+- platform: mqtt
+  name: "Guest Bath Fan"
+  state_topic: "smartthings/Guest Bath Fan/switch/state"
+  command_topic: "smartthings/Guest Bath Fan/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+  optimistic: false
+  qos: 2
+  
+  # GE Z-wave Wireless In-Wall paddle dimmer 14294
+- platform: mqtt
+  name: "Nichols Office Light"
+  state_topic: "smartthings/Nichols Office Light/switch/state"
+  command_topic: "smartthings/Nichols Office Light/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  brightness_state_topic: "smartthings/Nichols Office Light/level/state"
+  brightness_command_topic: "smartthings/Nichols Office Light/level/cmd"
+  brightness_scale: 99
+  brightness_value_template: '{{ value }}'
   retain: false
   optimistic: false
   qos: 2
